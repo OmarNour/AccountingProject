@@ -1,0 +1,14 @@
+Django==1.11.2
+Faker==0.7.17
+Pillow==4.2.1
+argon2-cffi==16.3.0
+cffi==1.10.0
+django-money-rates==0.3.1
+olefile==0.44
+pip==9.0.1
+pycparser==2.18
+python-dateutil==2.6.0
+pytz==2017.2
+setuptools==36.0.1
+six==1.10.0
+wheel==0.29.0
