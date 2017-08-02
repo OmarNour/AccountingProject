@@ -92,7 +92,6 @@ DATABASES = {
         'USER': 'omarNour',
         'PASSWORD': 'rootroot',
         'HOST': 'omarNour.mysql.pythonanywhere-services.com',
-
     }
 }
 
