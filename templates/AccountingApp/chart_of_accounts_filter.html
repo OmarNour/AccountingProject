@@ -1,0 +1,41 @@
+{% extends "AccountingApp/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            {% if chartOfAccounts %}
+                <table class="table table-hover">
+                    <thead>
+                    <th> Code </th>
+                    <th> Account Name </th>
+                    <th> Type Of Account </th>
+                    <th> Main Account </th>
+                    </thead>
+
+                    {% for chartOfAccount in chartOfAccounts %}
+                        <tr>
+                            <td> {{ chartOfAccount.code }} </td>
+                            <td> {{ chartOfAccount.name }} </td>
+                            <td> {{ chartOfAccount.type_code }} </td>
+                            <td> {{ chartOfAccount.main_code }} </td>
+
+                        </tr>
+
+                    <tfoot>
+                       <tr>
+                          <td valign="bottom" align="right">
+                              <a class="btn btn-default" href="{% url 'AccountingApp:edit_account_by_code' code=chartOfAccount.code%}" role="button"> Edit </a>
+                          </td>
+                       </tr>
+                    </tfoot>
+
+                    {% endfor %}
+
+                </table>
+
+            {% endif %}
+        </div>
+
+
+    </div>
+
+{% endblock %}

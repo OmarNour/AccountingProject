@@ -1,0 +1,17 @@
+{% extends "AccountingApp/base.html" %}
+{% block content %}
+    <div>
+        <div class="container">
+            <form method="POST">
+                <table>
+                {{ chartOfAccounts.as_table }}
+                </table>
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" name="save_add_another" value="Save and add another">
+                <input type="submit" class="btn btn-primary" name="save" value="Save">
+                <a class="btn btn-default" href="{% url 'AccountingApp:chart_of_accounts' %}"> Cancel</a>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

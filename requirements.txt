@@ -1,0 +1,15 @@
+argon2-cffi==16.3.0
+cffi==1.10.0
+dj-database-url==0.4.2
+Django==1.11.2
+django-money-rates==0.3.1
+Faker==0.7.17
+gunicorn==19.7.1
+olefile==0.44
+Pillow==4.2.1
+pycparser==2.18
+python-dateutil==2.6.0
+pytz==2017.2
+six==1.10.0
+whitenoise==3.3.0
+psycopg2==2.6.2
