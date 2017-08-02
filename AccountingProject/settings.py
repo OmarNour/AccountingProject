@@ -26,7 +26,7 @@ SECRET_KEY = 'u-@1tew=7um0%(*b!mbz0!l$xf%v4poa4j3+$-3fm*3pw8$%ow'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['omarnour.pythonanywhere.com']
+ALLOWED_HOSTS = ['omarnour.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -72,11 +72,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AccountingProject.wsgi.application'
 
 
-"""
+
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
