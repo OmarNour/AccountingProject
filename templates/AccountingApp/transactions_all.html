@@ -33,6 +33,7 @@
             {% endif %}
         </div>
     <a class="btn btn-success" href="{% url 'AccountingApp:add_transaction' %}"><span class="glyphicon glyphicon-plus"></span> Add </a>
+    <a class="btn btn-success" href="{% url 'AccountingApp:export' atype='sheet' %}"><span class="glyphicon glyphicon-export"></span> Export </a>
     </div>
 
 {% endblock %}

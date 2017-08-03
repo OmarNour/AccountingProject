@@ -2,14 +2,20 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 
 from AccountingApp.models import AccountTypes, ChartOfAccounts, ExchangeRate, Transactions, AccountTypesDrCr, Currencies
 from AccountingApp.forms import UserForm, UserProfileInfoForm, ChartOfAccountsForm, TransactionsForm
 
-from . import forms
+from AccountingApp import forms
+import django_excel as excel
+from django import forms as djangoForms
+
+
+class UploadFileForm(djangoForms.Form):
+    file = djangoForms.FileField()
 
 
 def register(request):
@@ -295,3 +301,88 @@ def edit_transaction_by_id(request, transaction_id):
 
     my_dict = {'transaction': transaction_edit, 'transaction_id': transaction_id}
     return render(request, 'AccountingApp/transactions_edit.html', context=my_dict)
+
+
+@login_required
+def export_data(request, atype):
+    if atype == "sheet":
+        return excel.make_response_from_a_table(
+            AccountTypes, 'xls', file_name="sheet")
+    elif atype == "book":
+        return excel.make_response_from_tables(
+            [Transactions, ChartOfAccounts], 'xls', file_name="book")
+    elif atype == "custom":
+        account_type = AccountTypes.objects.get(code=1)
+        chart_of_account = ChartOfAccounts.objects.filter(type_code=account_type)
+        column_names = ['code', 'name', 'type_code', 'main_code']
+        return excel.make_response_from_query_sets(
+            chart_of_account,
+            column_names,
+            'xls',
+            file_name="custom"
+        )
+    else:
+        return HttpResponseBadRequest(
+            "Bad request. please put one of these " +
+            "in your url suffix: sheet, book or custom")
+
+
+@login_required
+def import_sheet(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST,
+                              request.FILES)
+        if form.is_valid():
+            request.FILES['file'].save_to_database(
+                name_columns_by_row=0,
+                model=AccountTypes,
+                mapdict=['code', 'id', 'main_code_id', 'name'])
+            return HttpResponse("OK")
+        else:
+            return HttpResponseBadRequest()
+    else:
+        form = UploadFileForm()
+    return render(
+        request,
+        'AccountingApp/upload_form.html',
+        {'form': form})
+
+
+@login_required
+def import_data(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST,
+                              request.FILES)
+
+        def choice_func(row):
+            q = AccountTypes.objects.filter(slug=row[0])[0]
+            row[0] = q
+            return row
+        if form.is_valid():
+            request.FILES['file'].save_book_to_database(
+                models=[AccountTypes, ChartOfAccounts],
+                initializers=[None, choice_func],
+                mapdicts=[
+                    ['code', 'name', 'main_code'],
+                    ['code', 'name', 'type_code', 'main_code']]
+            )
+            return redirect('handson_view')
+        else:
+            return HttpResponseBadRequest()
+    else:
+        form = UploadFileForm()
+    return render(
+        request,
+        'AccountingApp/upload_form.html',
+        {
+            'form': form,
+            'title': 'Import excel data into database example',
+            'header': 'Please upload sample-data.xls:'
+        })
+
+
+def handson_table(request):
+    return excel.make_response_from_tables(
+        [AccountTypes, ChartOfAccounts], 'handsontable.html')
+
+
