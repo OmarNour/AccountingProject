@@ -17,9 +17,9 @@ urlpatterns = [
     url(r'^(?i)transaction/(?P<transaction_id>\w+)/$', views.get_transaction_by_id, name='get_transaction_by_id'),
     url(r'^(?i)edit-transaction/(?P<transaction_id>\w+)/$', views.edit_transaction_by_id, name='edit_transaction_by_id'),
     # url(r'^export/(.*)', views.export_data, name="export"),
-    url(r'^export/(?P<atype>\w+)/$', views.export_data, name="export"),
+    url(r'^export/(?P<atype>\w+)/$', views.export_data, name="export"),  # working fine
     url(r'^import/', views.import_data, name="import"),
-    url(r'^import_sheet/', views.import_sheet, name="import_sheet"),
+    url(r'^import_sheet/', views.import_sheet, name="import_sheet"),  # working fine
     url(r'^handson_view/', views.handson_table, name="handson_view"),
 
     #url(r'^(?i)user_login/', views.user_login, name='user_login'),
