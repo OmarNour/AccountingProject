@@ -1,144 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b09ab7f-f37e-4ab5-bc8f-0831eb7921c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/banner-bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/dog.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/intro-bg.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/ipad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/img/phones.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/Templates/AccountTypes/AccountTypes_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/Templates/AccountTypes/accounttypes_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/migrations/0002_auto_20170817_1801.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/migrations/0003_auto_20170818_1827.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountTypes/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountingApp/migrations/0004_auto_20170820_1630.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountingApp/migrations/0005_auto_20170820_2207.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/migrations/0002_auto_20170820_2207.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/chart_of_accounts/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_chart_of_accounts.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_member.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_confirm_delete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0002_auto_20170813_1900.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0003_auto_20170813_1903.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0004_auto_20170813_1950.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0005_auto_20170813_2117.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0006_auto_20170815_1928.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0007_auto_20170815_2219.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/landing-page.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-grid.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-reboot.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-reboot.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/animated.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/bordered-pulled.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/core.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/fixed-width.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/font-awesome.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/icons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/larger.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/list.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/path.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/rotated-flipped.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/screen-reader.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/stacked.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/less/variables.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_animated.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_bordered-pulled.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_core.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_fixed-width.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_icons.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_larger.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_list.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_path.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_rotated-flipped.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_screen-reader.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_stacked.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/_variables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/font-awesome/scss/font-awesome.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/jquery/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/jquery/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/popper/popper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/vendor/popper/popper.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/migrations/0001_initial.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/migrations/0002_auto_20170815_2325.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/templates/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/templates/signup.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/users_accounts/views.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/AccountingApp/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AccountingProject.iml" afterPath="$PROJECT_DIR$/.idea/AccountingProject.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/admin.py" afterPath="$PROJECT_DIR$/AccountingApp/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/forms.py" afterPath="$PROJECT_DIR$/AccountingApp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/models.py" afterPath="$PROJECT_DIR$/AccountingApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/urls.py" afterPath="$PROJECT_DIR$/AccountingApp/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/views.py" afterPath="$PROJECT_DIR$/AccountingApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingProject/settings.py" afterPath="$PROJECT_DIR$/AccountingProject/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingProject/urls.py" afterPath="$PROJECT_DIR$/AccountingProject/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/AccountingApp/base.html" afterPath="$PROJECT_DIR$/templates/AccountingApp/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/AccountingApp/home.html" afterPath="$PROJECT_DIR$/templates/AccountingApp/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/AccountingApp/transactions_all.html" afterPath="$PROJECT_DIR$/templates/AccountingApp/transactions_all.html" />
-    </list>
+    <list default="true" id="4b09ab7f-f37e-4ab5-bc8f-0831eb7921c7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -253,7 +116,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-11" />
     <option name="y" value="-2" />
     <option name="width" value="1378" />
@@ -619,7 +482,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40901503" sideWeight="0.14220877" order="7" side_tool="true" content_ui="tabs" />
