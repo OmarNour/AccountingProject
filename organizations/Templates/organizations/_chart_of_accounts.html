@@ -1,0 +1,33 @@
+<div class="org_accTypes">
+    <h3>{{ object }}</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <th> Code</th>
+            <th> Name</th>
+            <th> Main Account</th>
+
+            </thead>
+            {% for account in object.ChartOfAccounts_type_code.all %}
+                <tr>
+                    <td> {{ account.code }} </td>
+                    <td> {{ account.name }} </td>
+                    <td> {{ account.main_code.name }} </td>
+
+
+                    <td>
+                        <a href="{% url 'organizations:edit-account' org_id=account.org_id.id acc_typ_code_id=account.type_code.id pk=account.id %}"
+                           title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="#"
+                           title="Delete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                    </td>
+
+
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+

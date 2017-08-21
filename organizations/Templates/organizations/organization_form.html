@@ -1,0 +1,55 @@
+{% extends "organizations/organization_base.html" %}
+{% load bootstrap3 %}
+
+{% block org_content_4_2 %}
+
+    <h2> {% if object.id %}Update Organization {% else %} Create Organization {% endif %}</h2>
+    <form method="POST" id="organizationForm">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if object.id %}
+            <input type="submit" value="Update" class="btn btn-primary btn-large">
+            <a class="btn btn-danger" href="{% url 'organizations:delete' pk=object.pk %}"> Delete </a>
+        {% else %}
+            <input type="submit" value="Create" class="btn btn-primary btn-large">
+        {% endif %}
+
+        <a class="btn btn-default" href="{{ view.get_success_url }}"> Cancel</a>
+    </form>
+
+
+{% endblock %}
+
+{% block related_org_content %}
+    {% if object.id %}
+        {% block members_content %}
+            <div class="col-md-12">
+                {% if organization.OrganizationMember_organization_id.count == 0 %}
+                    <h2>No Members yet!</h2>
+                {% else %}
+                    {% include "organizations/_member.html" %}
+                {% endif %}
+            </div>
+        {% endblock %}
+        {% block acc_typ_content %}
+            <div class="col-md-12">
+                {% if organization.accountType_org_id.count == 0 %}
+                    <h2>No Account Types Defiened!</h2>
+                {% else %}
+
+                    {#% if organization.accountType_org_id == 0 %#}
+                    {#% for x in organization.accountType_org_id.all %#}
+
+                    {#% endfor %#}
+
+                    {% include "organizations/_accountTypes.html" %}
+                {% endif %}
+
+                <a class="btn btn-success"
+                   href="{% url 'organizations:create-account-type' org_id=organization.id %}"><span
+                        class="glyphicon glyphicon-plus"></span> Create new</a>
+
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}

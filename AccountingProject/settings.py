@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',
+    'users_accounts',
     'AccountingApp',
+    'organizations',
+    'AccountTypes',
+    'chart_of_accounts'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'users_accounts.middleware.user_mw.ThreadLocals',
+    # 'users_accounts.middleware.filter_ip_middleware.FilterIPMiddleware',
 ]
 
 ROOT_URLCONF = 'AccountingProject.urls'
@@ -76,7 +83,7 @@ WSGI_APPLICATION = 'AccountingProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -94,7 +101,7 @@ DATABASES = {
         'HOST': 'omarNour.mysql.pythonanywhere-services.com',
     }
 }
-
+"""
 # 5432
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -159,7 +166,11 @@ STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/accounting/user_login/'
+# LOGIN_URL = '/accounting/user_login/'
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
+
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/

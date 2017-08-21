@@ -19,7 +19,12 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/../AccountingProject\templates" />
+        <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/users_accounts/templates" />
+        <option value="$MODULE_DIR$/organizations/Templates" />
+        <option value="$MODULE_DIR$/AccountTypes/Templates" />
+        <option value="$MODULE_DIR$/chart_of_accounts/Templates" />
+        <option value="$MODULE_DIR$/AccountTypes/Templates/AccountTypes" />
       </list>
     </option>
   </component>

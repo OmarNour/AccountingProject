@@ -1,13 +1,12 @@
 from django.contrib import admin
 
-from AccountingApp.models import AccountTypes, ChartOfAccounts, ContactUs, UserProfileInfo, Currencies, ExchangeRate,\
+from AccountingApp.models import AccountTypes, ChartOfAccounts, ContactUs, Currencies, ExchangeRate,\
     DrCr, Transactions, Sign, AccountTypesDrCr
 
 
 admin.site.register(AccountTypes)
 admin.site.register(ChartOfAccounts)
 admin.site.register(ContactUs)
-admin.site.register(UserProfileInfo)
 admin.site.register(Currencies)
 admin.site.register(ExchangeRate)
 admin.site.register(DrCr)

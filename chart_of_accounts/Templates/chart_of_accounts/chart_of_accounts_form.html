@@ -1,0 +1,23 @@
+{% extends "chart_of_accounts/chart_of_accounts_base.html" %}
+{% load bootstrap3 %}
+
+{% block content_4_2 %}
+
+        <h2> {% if object.id %}Update {{ account_type.name }} Account{% else %} Create {{ account_type.name }} Account{% endif %}</h2>
+        <form method="POST" >
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% if object.id %}
+
+                <input type="submit" value="Update" class="btn btn-primary btn-large">
+                <a class="btn btn-danger" href="#"> Delete </a>
+            {% else %}
+                <input type="submit" value="Create" class="btn btn-primary btn-large">
+
+            {% endif %}
+
+            <a class="btn btn-default" href="{{ view.get_success_url }}"> Cancel</a>
+
+        </form>
+
+{% endblock %}

@@ -2,73 +2,85 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Accounting App!</title>
-    <!-- Latest compiled and minified CSS -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sharp Accounting!</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+          type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/landing-page.css' %}" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static "css/accAppStyle.css" %}"/>
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#navbar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{% url 'home' %}" title="Home"><span
-                        class="glyphicon glyphicon-home"></span> Home</a>
-            </div>
-
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'AccountingApp:accounts_types' %}"><span class="glyphicon glyphicon-th-list"></span> Account Types</a>
-                    <li><a href="{% url 'AccountingApp:chart_of_accounts' %}"><span class="glyphicon glyphicon-th"></span> Chart Of Accounts</a>
-                    <li><a href="{% url 'AccountingApp:all_transactions' %}"><span class="glyphicon glyphicon-list-alt"></span> Transaction</a>
-                    {% endif %}
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    {# Some logic on what to display for last item#}
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                        <li><a href="{% url 'AccountingApp:settings' %}"><span class="glyphicon glyphicon-tasks"></span> Settings</a></li>
-                        <li><a href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-queen"></span> Admin</a></li>
-                    {% else %}
-                        <li><a href="{% url 'AccountingApp:user_login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a href="{% url 'AccountingApp:register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                    {% endif %}
-                    <li><a href="{% url 'contact-us' %}"><span class="glyphicon glyphicon-envelope"></span> Contact Us</a></li>
-
-
-
-
-                </ul>
-
-            </div>
-        </div>
-    </nav>
 </head>
+
 <body>
+<!-- Navigation -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="{% url 'home' %}" title="Home"><span
+                        class="glyphicon glyphicon-home"></span> Home</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'organizations:all' %}"><span
+                        class="glyphicon glyphicon-globe"></span>
+                    Organizations </a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:accounts_types' %}"><span
+                        class="glyphicon glyphicon-th-list"></span>
+                    Account Types </a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:chart_of_accounts' %}"><span
+                        class="glyphicon glyphicon-th"></span>
+                    Chart Of Accounts</a>
+                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:all_transactions' %}"><span
+                    class="glyphicon glyphicon-list-alt"></span>
+                Transaction</a>
+            {% endif %}
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            {# Some logic on what to display for last item#}
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:settings' %}"><span class="glyphicon glyphicon-tasks"></span>
+                    Settings</a></li>
+                {% if user.is_staff %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-queen"></span> Admin</a></li>
+                {% endif %}
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span>
+                    Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:signup' %}"><span class="glyphicon glyphicon-user"></span>
+                    Signup</a></li>
+            {% endif %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact-us' %}"><span class="glyphicon glyphicon-envelope"></span> Contact Us</a></li>
+
+        </ul>
+    </div>
+</nav>
 
 <div>
     {% block content %}
@@ -77,9 +89,33 @@
 </div>
 
 
+<footer>
+    <div class="container">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#">Home</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#about">About</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#services">Services</a>
+            </li>
+            <li class="footer-menu-divider list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+        <p class="copyright text-muted small">Copyright &copy; Your Company 2017. All Rights Reserved</p>
+    </div>
+</footer>
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src={% static 'vendor/jquery/jquery.min.js' %}></script>
+<script src={% static 'vendor/popper/popper.min.js' %}></script>
+<script src={% static 'vendor/bootstrap/js/bootstrap.min.js' %}></script>
 
 </body>
 </html>

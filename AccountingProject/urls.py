@@ -23,7 +23,9 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^(?i)contact-us/', views.contactus, name='contact-us'),
     url(r'^(?i)accounting/', include('AccountingApp.urls')),
-    url(r'^(?i)logout/$', views.user_logout, name='logout'),
+    url(r'^(?i)accounts/', include('users_accounts.urls', namespace='users_accounts')),
+    url(r'^(?i)accounts/', include('django.contrib.auth.urls')),
+    url(r'^(?i)organizations/', include('organizations.urls', namespace='organizations')),
     url(r'^(?i)admin/', admin.site.urls),
 ]
 

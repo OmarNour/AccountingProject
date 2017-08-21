@@ -5,26 +5,31 @@
             {% if transactions %}
                 <table class="table table-hover">
                     <thead>
-                    <th> Edit </th>
-                    <th> ID </th>
-                    <th> Transaction Date </th>
-                    <th> Amount </th>
-                    <th> Currency </th>
-                    <th> Eqv Amount </th>
-                    <th> Dr Account </th>
-                    <th> Cr Account </th>
+                    <th> ID</th>
+                    <th> Transaction Date</th>
+                    <th> Amount</th>
+                    <th> Currency</th>
+                    <th> Eqv Amount</th>
+                    <th> Dr Account</th>
+                    <th> Cr Account</th>
+                    <th></th>
                     </thead>
 
                     {% for transaction in transactions %}
                         <tr>
-                            <td> <a href="{% url 'AccountingApp:edit_transaction_by_id' transaction_id=transaction.transaction_id%}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td> {{ transaction.transaction_id }} </a> </td>
+
+                            <td> {{ transaction.transaction_id }} </td>
                             <td> {{ transaction.transaction_date }} </td>
                             <td> {{ transaction.amount }} </td>
                             <td> {{ transaction.currency_id }} </td>
                             <td> {{ transaction.base_eqv_amount }} </td>
                             <td> {{ transaction.dr_account_code }} </td>
                             <td> {{ transaction.cr_account_code }} </td>
+                            <td>
+                                <a href="{% url 'AccountingApp:edit_transaction_by_id' transaction_id=transaction.transaction_id %}"
+                                   title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                            </td>
                         </tr>
 
                     {% endfor %}
@@ -32,8 +37,10 @@
                 </table>
             {% endif %}
         </div>
-    <a class="btn btn-success" href="{% url 'AccountingApp:add_transaction' %}"><span class="glyphicon glyphicon-plus"></span> Add </a>
-    <a class="btn btn-success" href="{% url 'AccountingApp:export' atype='sheet' %}"><span class="glyphicon glyphicon-export"></span> Export </a>
+        <a class="btn btn-success" href="{% url 'AccountingApp:add_transaction' %}"><span
+                class="glyphicon glyphicon-plus"></span> Add </a>
+        <a class="btn btn-success" href="{% url 'AccountingApp:export' atype='sheet' %}"><span
+                class="glyphicon glyphicon-export"></span> Export </a>
     </div>
 
 {% endblock %}

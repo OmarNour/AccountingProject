@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-from datetime import datetime
-
+from django.utils import timezone
 
 
 class Sign(models.Model):
@@ -13,7 +11,7 @@ class Sign(models.Model):
 
 class DrCr(models.Model):
     dr_cr_id = models.IntegerField(primary_key=True)
-    dr_cr_desc  = models.CharField(max_length=2, null=False,blank=False)
+    dr_cr_desc = models.CharField(max_length=2, null=False,blank=False)
 
     def __str__(self):
         return '{} - {}'.format(self.dr_cr_id,self.dr_cr_desc)
@@ -48,6 +46,9 @@ class ChartOfAccounts(models.Model):
     type_code = models.ForeignKey(AccountTypes)
     main_code = models.ForeignKey('self', null=True, blank=True)
 
+    def related_transactions(self):
+        return self.Transactions_cr_account_code()
+
     def __str__(self):
         return '{} - {}'.format(self.name, self.type_code)
 
@@ -65,8 +66,8 @@ class Currencies(models.Model):
 
 class Transactions(models.Model):
     transaction_id = models.IntegerField(primary_key=True, null=False,blank=False)
-    transaction_date = models.DateTimeField(default=datetime.now(), null=False,blank=False)
-    value_date = models.DateTimeField(default=datetime.now(), null=False,blank=False)
+    transaction_date = models.DateTimeField(default=timezone.now(), null=False,blank=False)
+    value_date = models.DateTimeField(default=timezone.now(), null=False,blank=False)
     amount = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
     dr_account_code = models.ForeignKey(ChartOfAccounts, null=True, blank=False, related_name='Transactions_dr_account_code')
     cr_account_code = models.ForeignKey(ChartOfAccounts, null=True, blank=False, related_name='Transactions_cr_account_code')
@@ -86,7 +87,7 @@ class ExchangeRate(models.Model):
     to_currency_id = models.ForeignKey(Currencies, related_name='to_currency_id', null=False, blank=False)
     rate = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
     override_rate = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
-    last_updated = models.DateTimeField(default=datetime.now(), null=False, blank=False)
+    last_updated = models.DateTimeField(default=timezone.now(), null=False, blank=False)
 
     class Meta:
         unique_together = ('from_currency_id', 'to_currency_id')
@@ -103,13 +104,4 @@ class ContactUs(models.Model):
     def __str__(self):
         return self.email
 
-
-class UserProfileInfo(models.Model):
-    # Create relationship (don't inherit from User!)
-    user = models.OneToOneField(User)
-    portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-
-    def __str__(self):
-        return self.user.username
 

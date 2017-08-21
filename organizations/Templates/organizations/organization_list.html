@@ -1,0 +1,42 @@
+{% extends "organizations/organization_base.html" %}
+{% load bootstrap3 %}
+
+{% block org_content %}
+    <div class="container">
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead>
+                <th> ID</th>
+                <th> Name</th>
+                <th> Email</th>
+                <th> Main Organization</th>
+                <th> # Members</th>
+                </thead>
+
+                {% for org in UserOrganizations %}
+                    <tr>
+
+                        <td> {{ org.id }} </td>
+                        <td> {{ org.name }} </td>
+                        <td> {{ org.email }} </td>
+                        <td> {{ org.main_org }} </td>
+                        <td> {{ org.OrganizationMember_organization_id.count }} </td>
+                        <td>
+                            <a href="{% url 'organizations:edit' pk=org.id %}"><span
+                                    title="Edit" class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+        <a class="btn btn-success" href="{% url 'organizations:create' %}"><span
+                class="glyphicon glyphicon-plus"></span> Create new</a>
+
+    </div>
+{% endblock %}

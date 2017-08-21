@@ -1,5 +1,5 @@
 from django import forms
-from AccountingApp.models import ContactUs, UserProfileInfo, AccountTypes, ChartOfAccounts,Transactions
+from AccountingApp.models import ContactUs, AccountTypes, ChartOfAccounts,Transactions
 from django.contrib.auth.models import User
 from AccountingApp import views
 # from django.core import validators
@@ -51,7 +51,3 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 
-class UserProfileInfoForm(forms.ModelForm):
-    class Meta:
-        model = UserProfileInfo
-        fields = ('portfolio_site','profile_pic')

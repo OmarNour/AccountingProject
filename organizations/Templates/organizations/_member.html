@@ -1,0 +1,33 @@
+<div class="org_member">
+    <h3>Members</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <th> ID</th>
+            <th> User name</th>
+            <th> Email</th>
+            <th> Joined</th>
+            <th> Last Login</th>
+            <th> Owner?</th>
+            </thead>
+            {% for member in organization.OrganizationMember_organization_id.all %}
+                <tr>
+                    <td> {{ member.user.id }} </td>
+                    <td> {{ member.user.username }} </td>
+                    <td> {{ member.user.email }} </td>
+                    <td> {{ member.user.date_joined|date }} </td>
+                    <td> {{ member.user.last_login }}</td>
+                    {% if organization.owner == member.user %}
+                        <td> Yes</td>
+                    {% else %}
+                        <td> No</td>
+                    {% endif %}
+                {% if organization.owner == user and user.is_staff == 1%}
+                <td><a href="{% url 'organizations:delete-member' org_id=organization.id usr_id=member.user.id%}" title="Delete member"><span class="glyphicon glyphicon-remove-circle"></span></a> </td>
+                {% endif %}
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
