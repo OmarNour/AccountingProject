@@ -1,0 +1,11 @@
+{% extends "organizations/organization_base.html" %}
+{% load bootstrap3 %}
+
+{% block org_content %}
+    <form action="" method="post">{% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input class='btn btn-danger' type="submit" value="Confirm" />
+    <a class="btn btn-default" href="{{ view.get_success_url }}"> Cancel</a>
+  </form>
+
+{% endblock %}

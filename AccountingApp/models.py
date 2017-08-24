@@ -17,6 +17,32 @@ class DrCr(models.Model):
         return '{} - {}'.format(self.dr_cr_id,self.dr_cr_desc)
 
 
+class Currencies(models.Model):
+    currency_id = models.CharField(primary_key=True, max_length=4)
+    decimal_precision = models.IntegerField(default=2, null=False, blank=False)
+    currency_latin_name = models.CharField(max_length=500)
+    currency_arabic_name = models.CharField(max_length=500)
+    # base_currency = models.BooleanField(default=False)
+
+    def __str__(self):
+        return '{}'.format(self.currency_id)
+
+
+class ExchangeRate(models.Model):
+    exchange_rate_id = models.AutoField(primary_key=True)
+    from_currency_id = models.ForeignKey(Currencies, related_name='from_currency_id', null=False, blank=False)
+    to_currency_id = models.ForeignKey(Currencies, related_name='to_currency_id', null=False, blank=False)
+    rate = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
+    override_rate = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
+    last_updated = models.DateTimeField(default=timezone.now, null=False, blank=False)
+
+    class Meta:
+        unique_together = ('from_currency_id', 'to_currency_id')
+
+    def __str__(self):
+        return '{} To {}: {}'.format(self.from_currency_id, self.to_currency_id,self.override_rate if self.override_rate > 0 else self.rate)
+
+
 class AccountTypes(models.Model):
     # Assets = Liabilities + Equity/Capital + Income/Revenue - Expenses
     code = models.IntegerField(unique=True)
@@ -53,21 +79,10 @@ class ChartOfAccounts(models.Model):
         return '{} - {}'.format(self.name, self.type_code)
 
 
-class Currencies(models.Model):
-    currency_id = models.CharField(primary_key=True, max_length=4)
-    decimal_precision = models.IntegerField(default=2, null=False,blank=False)
-    currency_latin_name = models.CharField(max_length=500)
-    currency_arabic_name = models.CharField(max_length=500)
-    base_currency = models.BooleanField(default=False)
-
-    def __str__(self):
-        return '{} {}'.format(self.currency_id, '(Base)' if self.base_currency else '')
-
-
 class Transactions(models.Model):
     transaction_id = models.IntegerField(primary_key=True, null=False,blank=False)
-    transaction_date = models.DateTimeField(default=timezone.now(), null=False,blank=False)
-    value_date = models.DateTimeField(default=timezone.now(), null=False,blank=False)
+    transaction_date = models.DateTimeField(default=timezone.now, null=False,blank=False)
+    value_date = models.DateTimeField(default=timezone.now, null=False,blank=False)
     amount = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
     dr_account_code = models.ForeignKey(ChartOfAccounts, null=True, blank=False, related_name='Transactions_dr_account_code')
     cr_account_code = models.ForeignKey(ChartOfAccounts, null=True, blank=False, related_name='Transactions_cr_account_code')
@@ -79,21 +94,6 @@ class Transactions(models.Model):
 
     def __str__(self):
         return '{} {} ({}) ({})'.format(self.transaction_id, self.amount, self.dr_account_code, self.cr_account_code)
-
-
-class ExchangeRate(models.Model):
-    exchange_rate_id = models.AutoField(primary_key=True)
-    from_currency_id = models.ForeignKey(Currencies, related_name='from_currency_id', null=False, blank=False)
-    to_currency_id = models.ForeignKey(Currencies, related_name='to_currency_id', null=False, blank=False)
-    rate = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
-    override_rate = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
-    last_updated = models.DateTimeField(default=timezone.now(), null=False, blank=False)
-
-    class Meta:
-        unique_together = ('from_currency_id', 'to_currency_id')
-
-    def __str__(self):
-        return '{} To {}: {}'.format(self.from_currency_id, self.to_currency_id,self.override_rate if self.override_rate > 0 else self.rate)
 
 
 class ContactUs(models.Model):

@@ -1,0 +1,34 @@
+<div class="org_accTypes">
+    <h3>Rates</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <th> From</th>
+            <th> To</th>
+            <th> Current Rate</th>
+            <th> Override Rate</th>
+            </thead>
+            {% for curr in organization.OrgCurrencies_org_id.all %}
+                {% if curr.base_currency %}
+                    {% for rates in organization.OrgExchangeRate_Org_id.all %}
+                        <tr>
+                            <td> {{ rates.from_currency_id }} </td>
+                            <td> {{ rates.to_currency_id.currency_id }} </td>
+                            <td> {{ rates.swapped_current_rate }} </td>
+                            <td> {{ rates.override_rate }} </td>
+                            <td>
+                                <a href="#"
+                                   title="Override rate"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                            </td>
+
+
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+

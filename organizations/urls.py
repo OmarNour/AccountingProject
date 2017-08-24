@@ -28,4 +28,8 @@ urlpatterns = [
     url(r'^(?i)new-account/(?P<org_id>\w+)-(?P<acc_typ_code_id>\w+)$', chart_of_accounts_views.CreateChartOfAccountView.as_view(), name='create-account'),
     url(r'^(?i)edit-account/(?P<org_id>\w+)-(?P<acc_typ_code_id>\w+)-(?P<pk>\w+)$', chart_of_accounts_views.UpdateChartOfAccountView.as_view(), name='edit-account'),
 
+    # handling Currencies
+    url(r'^(?i)add-currency/(?P<org_id>\w+)$', views.CreateCurrenciesView.as_view(), name='add-currency'),
+    url(r'^(?i)edit-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.UpdateCurrenciesView.as_view(), name='edit-currency'),
+    url(r'^(?i)delete-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.DeleteCurrenciesView.as_view(), name='delete-currency'),
 ]

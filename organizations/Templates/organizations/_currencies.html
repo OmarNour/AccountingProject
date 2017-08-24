@@ -1,0 +1,35 @@
+<div class="org_accTypes">
+    <h3>Currencies</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <th> Curr.</th>
+            <th> Decimal Prec.</th>
+            <th> Base?</th>
+            </thead>
+            {% for curr in organization.OrgCurrencies_org_id.all %}
+                <tr>
+                    <td> {{ curr.currency_id }} </td>
+                    <td> {{ curr.decimal_precision }} </td>
+                    {% if curr.base_currency %}
+                        <td> Yes</td>
+                    {% else %}
+                        <td> No</td>
+                    {% endif %}
+                    <td>
+                        <a href="{% url 'organizations:edit-currency' org_id=curr.Org_id.id pk=curr.id %}"
+                           title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                        <a href="{% url 'organizations:delete-currency' org_id=curr.Org_id.id pk=curr.id %}"
+                           title="Delete"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                    </td>
+
+
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+

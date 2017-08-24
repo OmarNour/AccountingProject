@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 
 from django.contrib import messages
@@ -13,8 +13,9 @@ from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.models import User
 
-from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm
-from .models import Organization, OrganizationMember
+from AccountingApp.models import ExchangeRate, Currencies
+from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm, CurrenciesForm
+from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate
 
 
 class CreateOrganization(LoginRequiredMixin, generic.CreateView):
@@ -38,14 +39,6 @@ class CreateOrganization(LoginRequiredMixin, generic.CreateView):
         OrganizationMember.objects.create(user=self.request.user, organization_id=organization)
 
         return super(CreateOrganization, self).form_valid(form)
-    """
-    def get_form_kwargs(self):
-        kwargs = super(CreateOrganization, self).get_form_kwargs()
-        # kwargs.update({'user': self.request.user})
-        kwargs.update({'owner_org_id': self.kwargs.get("pk")})
-        kwargs.update({'exclude_org_id': self.kwargs.get("pk")})
-        return kwargs
-    """
 
 
 class OrganizationList(LoginRequiredMixin,generic.ListView):
@@ -53,7 +46,7 @@ class OrganizationList(LoginRequiredMixin,generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(OrganizationList, self).get_context_data(**kwargs)
-        context['UserOrganizations'] = Organization.objects.filter(owner=self.request.user).order_by('id')  # whatever you would like
+        context['UserOrganizations'] = Organization.objects.filter(owner=self.request.user).order_by('id')
         return context
 
 
@@ -145,3 +138,137 @@ class DeleteMember(LoginRequiredMixin, generic.RedirectView):
                 "Successfully left the organization."
             )
         return super().get(request, *args, **kwargs)
+
+
+class CreateCurrenciesView(LoginRequiredMixin, generic.CreateView):
+    form_class = CurrenciesForm
+    template_name = 'organizations/orgcurrencies_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+
+    def get_form_kwargs(self):
+        kwargs = super(CreateCurrenciesView, self).get_form_kwargs()
+        kwargs.update({'org_id': self.kwargs.get("org_id")})
+        return kwargs
+
+    def form_valid(self, form):
+
+        form.instance.created_by = self.request.user
+        form.instance.Org_id = get_object_or_404(Organization, pk=self.kwargs.get("org_id"))
+
+        form.save(commit=True)
+        print('after commit')
+        handle_exchange_rate(org_id=form.instance.Org_id,
+                             from_currency_id=form.instance.currency_id,
+                             new_base_currency=form.instance.base_currency)
+        return super(CreateCurrenciesView, self).form_valid(form)
+
+
+class UpdateCurrenciesView(LoginRequiredMixin, generic.UpdateView):
+    form_class = CurrenciesForm
+    template_name = 'organizations/orgcurrencies_form.html'
+
+    def get_queryset(self):
+        return OrgCurrencies.objects
+
+    def get_success_url(self):
+        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+
+    def get_form_kwargs(self):
+        kwargs = super(UpdateCurrenciesView, self).get_form_kwargs()
+        kwargs.update({'org_id': self.kwargs.get("org_id")})
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.modified_by = self.request.user
+        form.instance.modified_date = timezone.now()
+
+        try:
+            return super(UpdateCurrenciesView, self).form_valid(form)
+        except IntegrityError:
+            return HttpResponse("ERROR: Currency already exists!")
+
+
+class DeleteCurrenciesView(LoginRequiredMixin, generic.DeleteView):
+    model = OrgCurrencies
+
+    def get_success_url(self):
+        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+
+
+# ############################# Standalone Functions ################################ #
+def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
+    '''
+    1- when new currency added-ok, updated or deleted
+    2- when base currecny flag updated, then delete all and repopulate OrgExchangeRate
+    '''
+    swap=0
+    try:
+        base_currency = OrgCurrencies.objects.filter(Org_id=org_id, base_currency=True).get()
+    except OrgCurrencies.DoesNotExist:
+        # print('DoesNotExist!!')
+        pass
+    else:
+        # print('DoesExist')
+
+        if base_currency.currency_id != from_currency_id:
+            base_currency_currencies = Currencies.objects.filter(currency_id=base_currency.currency_id)
+            try:
+                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=from_currency_id,
+                                                                        to_currency_id=base_currency_currencies)
+            except ExchangeRate.DoesNotExist:
+                swap = 1
+                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=base_currency_currencies,
+                                                                        to_currency_id=from_currency_id)
+
+            related_currency = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=from_currency_id).get()
+            try:
+                if swap == 1:
+                    swapped_current_rate= 1/exchange_to_base_id.rate
+                else:
+                    swapped_current_rate = exchange_to_base_id.rate
+                OrgExchangeRate.objects.create(Org_id=org_id,
+                                               ex_rate_id=exchange_to_base_id,
+                                               related_OrgCurrencies=related_currency,
+                                               from_currency_id=related_currency,
+                                               to_currency_id=base_currency,
+                                               swapped_current_rate=swapped_current_rate)
+            except IntegrityError:
+                pass
+            else:
+                pass
+
+    if new_base_currency:
+        # print('new base')
+        OrgExchangeRate.objects.filter(Org_id=org_id).all().delete()
+        print(from_currency_id)
+        from_currency_instance = Currencies.objects.filter(currency_id=from_currency_id).get()
+
+        from_org_currency_instance = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=from_currency_id).get()
+
+        for x in OrgCurrencies.objects.filter(Org_id=org_id).exclude(currency_id=from_currency_instance).all():
+
+            related_currency = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=x.currency_id).get()
+
+            try:
+                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=x.currency_id,
+                                                                        to_currency_id=from_currency_instance)
+            except ExchangeRate.DoesNotExist:
+                swap = 1
+                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=from_currency_id,
+                                                                        to_currency_id=x.currency_id)
+            if swap == 1:
+                swapped_current_rate = 1 / exchange_to_base_id.rate
+            else:
+                swapped_current_rate = exchange_to_base_id.rate
+
+            OrgExchangeRate.objects.create(Org_id=org_id,
+                                           ex_rate_id=exchange_to_base_id,
+                                           related_OrgCurrencies=related_currency,
+                                           from_currency_id=related_currency,
+                                           to_currency_id=from_org_currency_instance,
+                                           swapped_current_rate=swapped_current_rate)
+
+
+
