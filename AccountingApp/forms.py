@@ -1,7 +1,7 @@
 from django import forms
 from AccountingApp.models import ContactUs, AccountTypes, ChartOfAccounts,Transactions
 from django.contrib.auth.models import User
-from AccountingApp import views
+from AccountingApp import views as AppView
 # from django.core import validators
 
 
@@ -17,8 +17,8 @@ class TransactionsForm(forms.ModelForm):
         fields = '__all__'
 
     def clean(self):
-        base_currency = views.get_base_currency()
-        self.cleaned_data['exchange_rate'] = views.get_exchange_rate(self.cleaned_data['currency_id'].currency_id,
+        base_currency = AppView.get_base_currency()
+        self.cleaned_data['exchange_rate'] = AppView.get_exchange_rate(self.cleaned_data['currency_id'].currency_id,
                                                                      base_currency)
 
         base_eqv_amount = self.cleaned_data['exchange_rate'] * self.cleaned_data['amount']

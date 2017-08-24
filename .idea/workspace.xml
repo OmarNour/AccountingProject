@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b09ab7f-f37e-4ab5-bc8f-0831eb7921c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/migrations/0005_auto_20170824_1843.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingProject/settings.py" afterPath="$PROJECT_DIR$/AccountingProject/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/forms.py" afterPath="$PROJECT_DIR$/AccountingApp/forms.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,7 +55,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AccountingApp/admin.py" />
         <option value="$PROJECT_DIR$/organizations/get_username.py" />
         <option value="$PROJECT_DIR$/organizations/admin.py" />
         <option value="$PROJECT_DIR$/organizations/Templates/organization_base.html" />
@@ -106,6 +104,7 @@
         <option value="$PROJECT_DIR$/organizations/forms.py" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/_exchange_rates.html" />
         <option value="$PROJECT_DIR$/organizations/views.py" />
+        <option value="$PROJECT_DIR$/AccountingApp/forms.py" />
         <option value="$PROJECT_DIR$/AccountingProject/settings.py" />
       </list>
     </option>
@@ -847,14 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AccountingApp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_exchange_rates.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -907,17 +898,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AccountingApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AccountingApp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+          <caret line="3" column="39" lean-forward="true" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AccountingProject/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
+        <state relative-caret-position="105">
           <caret line="87" column="3" lean-forward="false" selection-start-line="87" selection-start-column="3" selection-end-line="87" selection-end-column="3" />
           <folding />
         </state>
