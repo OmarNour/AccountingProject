@@ -2,7 +2,7 @@ from django.forms import widgets
 
 from AccountingApp.models import Currencies
 from organizations import views
-from .models import Organization, OrganizationMember, OrgCurrencies
+from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate
 from django.contrib.auth.forms import forms
 from django.core.exceptions import ValidationError
 
@@ -71,7 +71,8 @@ class CurrenciesForm(forms.ModelForm):
         except OrgCurrencies.DoesNotExist:
             base_currency_changed = False
             if self.cleaned_data.get('base_currency') is True:
-                OrgCurrencies.objects.update(base_currency=False)
+                OrgCurrencies.objects.filter(Org_id=self.org_id).update(base_currency=False)
+
         else:
             try:
                 current_base = OrgCurrencies.objects.filter(Org_id=self.org_id, base_currency=True).get()
@@ -80,7 +81,7 @@ class CurrenciesForm(forms.ModelForm):
                 # print('DoesNotExist')
 
                 if self.cleaned_data.get('base_currency') is True:
-                    OrgCurrencies.objects.update(base_currency=False)
+                    OrgCurrencies.objects.filter(Org_id=self.org_id).update(base_currency=False)
                     base_currency_changed = True
                     new_base_currency = True
 
@@ -93,7 +94,7 @@ class CurrenciesForm(forms.ModelForm):
                         and self.cleaned_data.get('base_currency') is True:
 
                     base_currency_changed = True
-                    OrgCurrencies.objects.update(base_currency=False)
+                    OrgCurrencies.objects.filter(Org_id=self.org_id).update(base_currency=False)
                 else:
                     new_base_currency = False
 
@@ -103,4 +104,23 @@ class CurrenciesForm(forms.ModelForm):
                                            from_currency_id=self.cleaned_data.get('currency_id'),
                                            new_base_currency=base_currency_changed)
 
+        # self.cleaned_data['base_currency'] = True
+        if self.cleaned_data.get('base_currency') is False and \
+                OrgCurrencies.objects.filter(Org_id=self.org_id,
+                                             base_currency=True).exclude(currency_id=self.cleaned_data.get('currency_id')).count() == 0:
+            self.cleaned_data['base_currency'] = True
         return data.get('base_currency')
+
+
+class OverrideOrgExchangeRateForm(forms.ModelForm):
+    class Meta:
+        model = OrgExchangeRate
+        fields = ('id', 'swapped_current_rate', 'override_rate')
+
+    def __init__(self, *args, **kwargs):
+        self.url_org_id = kwargs.pop('org_id')
+        self.url_curr_id = kwargs.pop('curr_id')
+        self.url_pk = kwargs.pop('pk')
+        super().__init__(*args, **kwargs)
+        self.fields["swapped_current_rate"].label = "Current rate"
+        self.fields['swapped_current_rate'].widget.attrs['readonly'] = True

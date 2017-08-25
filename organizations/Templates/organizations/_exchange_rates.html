@@ -17,7 +17,7 @@
                             <td> {{ rates.swapped_current_rate }} </td>
                             <td> {{ rates.override_rate }} </td>
                             <td>
-                                <a href="#"
+                                <a href="{% url 'organizations:override-exchange-rate' org_id=rates.Org_id.id curr_id=rates.from_currency_id.currency_id.currency_id pk=rates.id %}"
                                    title="Override rate"><span class="glyphicon glyphicon-pencil"></span></a>
 
                             </td>

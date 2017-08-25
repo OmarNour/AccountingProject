@@ -14,7 +14,9 @@ from django.views import generic
 from django.contrib.auth.models import User
 
 from AccountingApp.models import ExchangeRate, Currencies
-from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm, CurrenciesForm
+from AccountingApp.views import get_exchange_rate
+from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm, CurrenciesForm, \
+    OverrideOrgExchangeRateForm
 from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate
 
 
@@ -197,20 +199,39 @@ class DeleteCurrenciesView(LoginRequiredMixin, generic.DeleteView):
         return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
 
 
+class OverrideOrgExchangeRateView(LoginRequiredMixin, generic.UpdateView):
+    form_class = OverrideOrgExchangeRateForm
+    template_name = 'organizations/org_exchange_rate_form.html'
+
+    def get_queryset(self):
+        return OrgExchangeRate.objects
+
+    def get_success_url(self):
+        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+
+    def get_form_kwargs(self):
+        kwargs = super(OverrideOrgExchangeRateView, self).get_form_kwargs()
+        kwargs.update({'org_id': self.kwargs.get("org_id")})
+        kwargs.update({'curr_id': self.kwargs.get("curr_id")})
+        kwargs.update({'pk': self.kwargs.get("pk")})
+
+        return kwargs
+
+
 # ############################# Standalone Functions ################################ #
 def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
     '''
     1- when new currency added-ok, updated or deleted
     2- when base currecny flag updated, then delete all and repopulate OrgExchangeRate
     '''
-    swap=0
+    swap = 0
     try:
         base_currency = OrgCurrencies.objects.filter(Org_id=org_id, base_currency=True).get()
     except OrgCurrencies.DoesNotExist:
         # print('DoesNotExist!!')
-        pass
+        base_currency_does_not_exist = True
     else:
-        # print('DoesExist')
+        base_currency_does_not_exist = False
 
         if base_currency.currency_id != from_currency_id:
             base_currency_currencies = Currencies.objects.filter(currency_id=base_currency.currency_id)
@@ -225,7 +246,7 @@ def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
             related_currency = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=from_currency_id).get()
             try:
                 if swap == 1:
-                    swapped_current_rate= 1/exchange_to_base_id.rate
+                    swapped_current_rate = 1/exchange_to_base_id.rate
                 else:
                     swapped_current_rate = exchange_to_base_id.rate
                 OrgExchangeRate.objects.create(Org_id=org_id,
@@ -236,18 +257,47 @@ def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
                                                swapped_current_rate=swapped_current_rate)
             except IntegrityError:
                 pass
-            else:
-                pass
 
     if new_base_currency:
         # print('new base')
-        OrgExchangeRate.objects.filter(Org_id=org_id).all().delete()
-        print(from_currency_id)
+        # save the current override in a dictionary first
         from_currency_instance = Currencies.objects.filter(currency_id=from_currency_id).get()
-
         from_org_currency_instance = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=from_currency_id).get()
 
+        """
+        override_dic = {}
+        override_new_dic = {}
+        if OrgExchangeRate.objects.filter(Org_id=org_id).count() > 0:
+
+            for y in OrgExchangeRate.objects.filter(Org_id=org_id).all():
+                override_dic[y.from_currency_id.currency_id.currency_id] = y.override_rate
+                previous_base_currency_id = y.to_currency_id
+
+            print('prev. base curr: {}'.format(previous_base_currency_id.currency_id))
+            if not base_currency_does_not_exist:
+                new_base_currency_id = base_currency.currency_id
+            else:
+                new_base_currency_id = from_org_currency_instance
+
+            print('new base curr: {}'.format(new_base_currency_id.currency_id))
+            print(override_dic)
+        
+        prev.base curr: EGP
+        new base curr: SAR
+        {'USD': Decimal('18.000000'), 'SAR': Decimal('5.000000')}
+        
+        for key, value in override_dic.items():
+            # print('if {} == {}'.format(str(key),str(new_base_currency_id.currency_id)))
+
+            if key == new_base_currency_id.currency_id.currency_id:
+                override_new_dic[previous_base_currency_id.currency_id.currency_id] = 1/value if value != 0 else 0
+            else:
+                override_new_dic[key] = 0
+        """
+        OrgExchangeRate.objects.filter(Org_id=org_id).all().delete()
+        # print('for loop')
         for x in OrgCurrencies.objects.filter(Org_id=org_id).exclude(currency_id=from_currency_instance).all():
+            swap = 0
 
             related_currency = OrgCurrencies.objects.filter(Org_id=org_id, currency_id=x.currency_id).get()
 
@@ -256,8 +306,9 @@ def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
                                                                         to_currency_id=from_currency_instance)
             except ExchangeRate.DoesNotExist:
                 swap = 1
-                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=from_currency_id,
+                exchange_to_base_id = ExchangeRate.objects.filter().get(from_currency_id=from_currency_instance,
                                                                         to_currency_id=x.currency_id)
+
             if swap == 1:
                 swapped_current_rate = 1 / exchange_to_base_id.rate
             else:
@@ -268,7 +319,8 @@ def handle_exchange_rate(org_id, from_currency_id, new_base_currency):
                                            related_OrgCurrencies=related_currency,
                                            from_currency_id=related_currency,
                                            to_currency_id=from_org_currency_instance,
-                                           swapped_current_rate=swapped_current_rate)
+                                           swapped_current_rate=swapped_current_rate,
+                                           override_rate=0)
 
 
 

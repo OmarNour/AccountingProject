@@ -32,4 +32,6 @@ urlpatterns = [
     url(r'^(?i)add-currency/(?P<org_id>\w+)$', views.CreateCurrenciesView.as_view(), name='add-currency'),
     url(r'^(?i)edit-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.UpdateCurrenciesView.as_view(), name='edit-currency'),
     url(r'^(?i)delete-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.DeleteCurrenciesView.as_view(), name='delete-currency'),
+
+    url(r'^(?i)override-exchange-rate/(?P<org_id>\w+)-(?P<curr_id>\w+)-(?P<pk>\w+)$', views.OverrideOrgExchangeRateView.as_view(), name='override-exchange-rate'),
 ]

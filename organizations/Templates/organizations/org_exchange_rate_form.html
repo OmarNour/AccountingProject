@@ -1,0 +1,17 @@
+{% extends "organizations/organization_base.html" %}
+
+{% load bootstrap3 %}
+{% block org_content_4_2 %}
+<h3> Override rate {{ object.from_currency_id }} to {{ object.to_currency_id.currency_id }}</h3>
+<form method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% if object.id %}
+        <input type="submit" value="Update" class="btn btn-primary btn-large">
+    {% else %}
+        <input type="submit" value="Add" class="btn btn-primary btn-large">
+    {% endif %}
+
+    <a class="btn btn-default" href="{{ view.get_success_url }}"> Cancel</a>
+</form>
+{% endblock %}
