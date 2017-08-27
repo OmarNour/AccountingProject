@@ -17,6 +17,20 @@ class DrCr(models.Model):
         return '{} - {}'.format(self.dr_cr_id,self.dr_cr_desc)
 
 
+class TransactionSources(models.Model):
+    source_name = models.CharField(max_length=50, null=False,blank=False)
+    source_key = models.CharField(unique=True, max_length=10, null=False, blank=False)
+    """
+    Manual: MAN
+    Expenses claim: ECLM
+    Purchase Order: PO
+    Invoice: INV
+    """
+
+    def __str__(self):
+        return self.source_name
+
+
 class Currencies(models.Model):
     currency_id = models.CharField(primary_key=True, max_length=4)
     decimal_precision = models.IntegerField(default=2, null=False, blank=False)

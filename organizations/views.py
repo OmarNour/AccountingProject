@@ -160,7 +160,7 @@ class CreateCurrenciesView(LoginRequiredMixin, generic.CreateView):
         form.instance.Org_id = get_object_or_404(Organization, pk=self.kwargs.get("org_id"))
 
         form.save(commit=True)
-        print('after commit')
+
         handle_exchange_rate(org_id=form.instance.Org_id,
                              from_currency_id=form.instance.currency_id,
                              new_base_currency=form.instance.base_currency)

@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 from AccountTypes import views as account_types_views
 from chart_of_accounts import views as chart_of_accounts_views
+from transactions import views as trans_views
 
 app_name = 'organizations'
 
@@ -33,5 +34,13 @@ urlpatterns = [
     url(r'^(?i)edit-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.UpdateCurrenciesView.as_view(), name='edit-currency'),
     url(r'^(?i)delete-currency/(?P<org_id>\w+)-(?P<pk>\w+)$', views.DeleteCurrenciesView.as_view(), name='delete-currency'),
 
+    # handling Exchange rates
     url(r'^(?i)override-exchange-rate/(?P<org_id>\w+)-(?P<curr_id>\w+)-(?P<pk>\w+)$', views.OverrideOrgExchangeRateView.as_view(), name='override-exchange-rate'),
+
+    # handling Transactions
+    url(r'^(?i)new-transaction/(?P<org_id>\w+)$', trans_views.CreateTransactionView.as_view(), name='new-transaction'),
+    url(r'^(?i)transactions/(?P<org_id>\w+)$', trans_views.TransactionsList.as_view(), name='transactions'),
+
+
+
 ]

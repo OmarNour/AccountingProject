@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from AccountingApp.models import Sign
 from organizations.models import Organization
 
 
@@ -18,6 +19,9 @@ class AccountTypes(models.Model):
     code = models.IntegerField(null=False, blank=False)
     name = models.CharField(max_length=500)
     main_code = models.ForeignKey('self', null=True, blank=True, related_query_name='orgID')
+
+    dr_sign = models.ForeignKey(Sign, null=False, blank=False, related_name='account_type_dr_sign')
+    cr_sign = models.ForeignKey(Sign, null=False, blank=False, related_name='account_type_cr_sign')
 
     created_by = models.ForeignKey(User, default=User, related_name='accountType_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)

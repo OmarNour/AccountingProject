@@ -59,7 +59,8 @@
                 {% endif %}
             </div>
         {% endblock %}
-        {% block acc_typ_content %}
+
+        {% block chart_of_accounts_content %}
             <div class="col-md-12">
                 {% if organization.accountType_org_id.count == 0 %}
                     <h3>No Account Types Defiened!</h3>
@@ -79,5 +80,18 @@
 
             </div>
         {% endblock %}
+
+        {% block transactions_content %}
+            <div class="col-md-12">
+                {% if organization.Transactions_org_id.count == 0 %}
+                    <h3>No Transactions yet!</h3>
+                {% else %}
+                    {% include "organizations/_transactions.html" %}
+                {% endif %}
+            <a class="btn btn-success" href="{% url 'organizations:new-transaction' org_id=organization.id %}"><span
+                class="glyphicon glyphicon-plus"></span> Create new</a>
+            </div>
+        {% endblock %}
+
     {% endif %}
 {% endblock %}

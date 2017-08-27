@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'AccountingApp',
     'organizations',
     'AccountTypes',
-    'chart_of_accounts'
+    'chart_of_accounts',
+    'transactions'
 ]
 
 MIDDLEWARE = [

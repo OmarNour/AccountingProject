@@ -1,0 +1,49 @@
+{% extends "transactions/transaction_base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead>
+                <th> ID</th>
+                <th> Transaction Date</th>
+                <th> Value Date</th>
+                <th> Amount</th>
+                <th> Currency</th>
+                <th> Dr Account</th>
+                <th> Cr Account</th>
+                <th> Base Currency</th>
+                <th> Ex Rate</th>
+                <th> Equivalent Amount</th>
+                <th> Source</th>
+                <th> Void</th>
+                </thead>
+
+                {% for trnx in OrgTransactions %}
+                    <tr>
+
+                        <td> {{ trnx.id }} </td>
+                        <td> {{ trnx.transaction_date }} </td>
+                        <td> {{ trnx.value_date }} </td>
+                        <td> {{ trnx.amount }} </td>
+                        <td> {{ trnx.currency_id }} </td>
+                        <td> {{ trnx.dr_account_code.name }} </td>
+                        <td> {{ trnx.cr_account_code.name }} </td>
+                        <td> {{ trnx.base_currency_id.currency_id }} </td>
+                        <td> {{ trnx.exchange_rate }} </td>
+                        <td> {{ trnx.base_eqv_amount }} </td>
+                        <td> {{ trnx.transaction_source.source_key }} </td>
+                        <td> {{ trnx.void }} </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+{% endblock %}

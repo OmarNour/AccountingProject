@@ -8,6 +8,7 @@
             <th> Current Rate</th>
             <th> Override Rate</th>
             </thead>
+
             {% for curr in organization.OrgCurrencies_org_id.all %}
                 {% if curr.base_currency %}
                     {% for rates in organization.OrgExchangeRate_Org_id.all %}
@@ -21,8 +22,6 @@
                                    title="Override rate"><span class="glyphicon glyphicon-pencil"></span></a>
 
                             </td>
-
-
                         </tr>
                     {% endfor %}
                 {% endif %}

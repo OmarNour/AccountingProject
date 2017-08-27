@@ -2,7 +2,7 @@ from django.forms import widgets
 
 from AccountingApp.models import Currencies
 from organizations import views
-from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate
+from .models import Organization, OrgCurrencies, OrgExchangeRate
 from django.contrib.auth.forms import forms
 from django.core.exceptions import ValidationError
 
@@ -124,3 +124,4 @@ class OverrideOrgExchangeRateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["swapped_current_rate"].label = "Current rate"
         self.fields['swapped_current_rate'].widget.attrs['readonly'] = True
+

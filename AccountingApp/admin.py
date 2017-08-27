@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from AccountingApp.models import AccountTypes, ChartOfAccounts, ContactUs, Currencies, ExchangeRate,\
-    DrCr, Transactions, Sign, AccountTypesDrCr
+    DrCr, Transactions, Sign, AccountTypesDrCr, TransactionSources
 
 
 admin.site.register(AccountTypes)
@@ -13,3 +13,4 @@ admin.site.register(DrCr)
 admin.site.register(Transactions)
 admin.site.register(Sign)
 admin.site.register(AccountTypesDrCr)
+admin.site.register(TransactionSources)

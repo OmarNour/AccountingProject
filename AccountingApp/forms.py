@@ -26,8 +26,8 @@ class TransactionsForm(forms.ModelForm):
         self.cleaned_data['base_currency_id'].currency_id = base_currency
         self.cleaned_data['base_eqv_amount'] = round(base_eqv_amount,6)
 
-        if not views.validate_transaction(self.cleaned_data['dr_account_code'].code,
-                                          self.cleaned_data['cr_account_code'].code):
+        if not AppView.validate_transaction(self.cleaned_data['dr_account_code'].code,
+                                            self.cleaned_data['cr_account_code'].code):
             raise forms.ValidationError("Dr and Cr are Not Balanced!")
 
 

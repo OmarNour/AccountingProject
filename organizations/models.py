@@ -26,9 +26,6 @@ class Organization(models.Model):
     class Meta:
         unique_together = ('owner', 'name')
 
-    def get_absolute_url(self):
-        return reverse("organizations:detail", kwargs={'pk': self.pk})
-
     def __str__(self):
         return '{}-{}'.format(self.id,self.name)
 

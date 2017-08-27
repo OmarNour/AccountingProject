@@ -25,6 +25,7 @@
         <option value="$MODULE_DIR$/AccountTypes/Templates" />
         <option value="$MODULE_DIR$/chart_of_accounts/Templates" />
         <option value="$MODULE_DIR$/AccountTypes/Templates/AccountTypes" />
+        <option value="$MODULE_DIR$/transactions/templates" />
       </list>
     </option>
   </component>

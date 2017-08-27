@@ -1,0 +1,25 @@
+{% extends "AccountingApp/base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            {% block trnx_content %}
+                <div class="col-md-4">
+                    {% block trnx_content_4_1 %}{% endblock %}
+                </div>
+                <div class="col-md-4">
+                    {% block trnx_content_4_2 %}{% endblock %}
+                </div>
+                <div class="col-md-4">
+                    {% block trnx_content_4_3 %}
+                        {% include "organizations/_exchange_rates.html" %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block related_trnx_content %}
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

@@ -45,9 +45,12 @@
 
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
+                {% if user.OrganizationMember_user.count > 0 %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'organizations:all' %}"><span
                         class="glyphicon glyphicon-globe"></span>
                     Organizations </a>
+                {% endif %}
+
                 <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:accounts_types' %}"><span
                         class="glyphicon glyphicon-th-list"></span>
                     Account Types </a>
