@@ -2,7 +2,7 @@ from django.forms import widgets
 
 from AccountingApp.models import Currencies
 from organizations import views
-from .models import Organization, OrgCurrencies, OrgExchangeRate
+from .models import Organization, OrgCurrencies, OrgExchangeRate, InvitedUsers
 from django.contrib.auth.forms import forms
 from django.core.exceptions import ValidationError
 
@@ -10,37 +10,33 @@ from django.core.exceptions import ValidationError
 class CreateOrganizationForm(forms.ModelForm):
     class Meta:
         model = Organization
-        fields = ('id', 'name', 'email', 'main_org')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        related_organizations = Organization.objects.all()
-        self.fields['main_org'] = forms.ModelChoiceField(queryset=related_organizations,
-                                                         required=False,
-                                                         widget=widgets.Select(attrs={'size': 1}))
+        fields = ('id', 'name', 'email')
+    #
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
 
 
 class OrganizationUpdateForm(forms.ModelForm):
     class Meta:
         model = Organization
-        fields = ('id','name', 'email', 'main_org')
+        fields = ('id','name', 'email')
 
-    def __init__(self, *args, **kwargs):
-
-        # self.fields["username"].label = "Display name"
-        # self.fields["email"].label = "Email address"
-
-        # org_owner = Organization.objects.filter(id=kwargs.pop('org_id')).get().owner
-        org_owner = Organization.objects.filter(id=kwargs.pop('owner_org_id')).get().owner
-
-        related_organizations = Organization.objects.\
-                                filter(owner=org_owner).\
-                                exclude(id=kwargs.pop('exclude_org_id'))
-
-        super().__init__(*args, **kwargs)
-        self.fields['main_org'] = forms.ModelChoiceField(queryset=related_organizations,
-                                                         required=False,
-                                                         widget=widgets.Select(attrs={'size': 1}))
+    # def __init__(self, *args, **kwargs):
+    #
+    #     # self.fields["username"].label = "Display name"
+    #     # self.fields["email"].label = "Email address"
+    #
+    #     # org_owner = Organization.objects.filter(id=kwargs.pop('org_id')).get().owner
+    #     org_owner = Organization.objects.filter(id=kwargs.pop('owner_org_id')).get().owner
+    #
+    #     related_organizations = Organization.objects.\
+    #                             filter(owner=org_owner).\
+    #                             exclude(id=kwargs.pop('exclude_org_id'))
+    #
+    #     super().__init__(*args, **kwargs)
+        # self.fields['main_org'] = forms.ModelChoiceField(queryset=related_organizations,
+        #                                                  required=False,
+        #                                                  widget=widgets.Select(attrs={'size': 1}))
 
 
 class CurrenciesForm(forms.ModelForm):
@@ -124,4 +120,21 @@ class OverrideOrgExchangeRateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["swapped_current_rate"].label = "Current rate"
         self.fields['swapped_current_rate'].widget.attrs['readonly'] = True
+
+
+class InviteUserForm(forms.ModelForm):
+    class Meta:
+        model = InvitedUsers
+        fields = ('id',
+                  'invited_user_first_name',
+                  'invited_user_last_name',
+                  'invited_user_email')
+
+    def __init__(self, *args, **kwargs):
+        self.url_org_id = kwargs.pop('org_id')
+
+        super().__init__(*args, **kwargs)
+        self.fields["invited_user_first_name"].label = "First name"
+        self.fields["invited_user_last_name"].label = "Last name"
+        self.fields["invited_user_email"].label = "Email"
 

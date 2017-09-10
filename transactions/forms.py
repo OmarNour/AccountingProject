@@ -1,7 +1,5 @@
 from django.forms import widgets
-from django.utils import timezone
-
-from chart_of_accounts.models import ChartOfAccounts
+from chart_of_accounts.models import ChartOfAccount
 from organizations.models import OrgCurrencies
 from transactions import views as trnx_views
 from .models import Transaction
@@ -28,7 +26,7 @@ class TransactionForm(forms.ModelForm):
         self.url_org_id = kwargs.pop('org_id')
         super().__init__(*args, **kwargs)
 
-        org_accounts = ChartOfAccounts.objects.filter(org_id=self.url_org_id).order_by('type_code')
+        org_accounts = ChartOfAccount.objects.filter(org_id=self.url_org_id).order_by('type_code')
         org_currencies = OrgCurrencies.objects.filter(Org_id=self.url_org_id).order_by('currency_id')
         base_currency = OrgCurrencies.objects.filter(Org_id=self.url_org_id, base_currency=True).order_by('currency_id')
 

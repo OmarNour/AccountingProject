@@ -1,0 +1,23 @@
+{% extends "AccountingApp/base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="container" id="wrap">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method="POST" accept-charset="utf-8" class="form" role="form">
+                    <h3>Invite User</h3>
+
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-user-plus"></i>
+                        Invite
+                    </button>
+                    <a class="btn btn-lg btn-default btn-block" href="{{ view.get_success_url }}"> Cancel</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

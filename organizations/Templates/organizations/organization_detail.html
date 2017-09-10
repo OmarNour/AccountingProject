@@ -1,43 +1,77 @@
 {% extends "organizations/organization_base.html" %}
 {% load bootstrap3 %}
+{% block org_content_4_1 %}
+    {% if object.id %} <h3>{{ object.name }} <a href="{% url 'organizations:edit' pk=object.id %}"><span title="Edit" class="glyphicon glyphicon-pencil"></span></a></h3>{% endif %}
+{% endblock %}
 
-{% block org_content %}
+{% block org_content_4_2 %}
+    {% if object.id %}
+        {% if organization.OrgCurrencies_org_id.count == 0 %}
+            <h3>No Currencies Defined!</h3>
+        {% else %}
+            {% include "organizations/_currencies.html" %}
+        {% endif %}
 
-    <ul class="list-group">
-        <h3>{{ object.name }}</h3>
-        <li class="list-group-item">Members: <span
-                class="badge">{{ object.OrganizationMember_organization_id.count }}</span></li>
-        <li class="list-group-item">Account Types: <span class="badge">{{ object.accountType_org_id.count }}</span></li>
-        <li class="list-group-item">Accounts: <span class="badge">{{ object.accountType_org_id.count }}</span></li>
-        <li class="list-group-item">Transactions: <span class="badge">{{ object.accountType_org_id.count }}</span></li>
-    </ul>
+        <a class="btn btn-success"
+           href="{% url 'organizations:add-currency' org_id=organization.id %}"><span
+                class="glyphicon glyphicon-plus"></span> Add Currency</a>
+    {% endif %}
+{% endblock %}
+
+{% block org_content_4_3 %}
+    {% if object.id %}
+        {% for curr in organization.OrgCurrencies_org_id.all %}
+            {% if curr.base_currency %}
+                {% if organization.OrgExchangeRate_Org_id.count == 0 %}
+                    <h3>No Rates Available!</h3>
+                {% else %}
+                    {% include "organizations/_exchange_rates.html" %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block members_content %}
+    {% if organization.OrganizationMember_organization_id.count == 0 %}
+        <h3>No Members yet!</h3>
+    {% else %}
+        {% include "organizations/_member.html" %}
+    {% endif %}
+    <a class="btn btn-success"
+       href="{% url 'organizations:invite-user' org_id=organization.id %}"><span
+            class="glyphicon glyphicon-plus"></span> Invite </a>
+{% endblock %}
+
+{% block chart_of_accounts_content %}
+
+    {% if organization.accountType_org_id.count == 0 %}
+        <h3>No Account Types Defiened!</h3>
+    {% else %}
+
+        {#% if organization.accountType_org_id == 0 %#}
+        {#% for x in organization.accountType_org_id.all %#}
+
+        {#% endfor %#}
+
+        {% include "organizations/_accountTypes.html" %}
+    {% endif %}
+
+    <a class="btn btn-success"
+       href="{% url 'organizations:create-account-type' org_id=organization.id %}"><span
+            class="glyphicon glyphicon-plus"></span> Create new</a>
 
 {% endblock %}
 
-{% block post_org %}
-    {% if object.id %}
-        <div class="col-md-8">
-            {% if organization.OrganizationMember_organization_id.count == 0 %}
-                <h2>No Members yet!</h2>
-            {% else %}
-                {% include "organizations/_member.html" %}
-            {% endif %}
-        </div>
+{% block transactions_content %}
 
-        <div class="col-md-8">
-            {% if organization.accountType_org_id.count == 0 %}
-                <h2>No Account Types Defiened!</h2>
-            {% else %}
-
-                {#% if organization.accountType_org_id == 0 %#}
-                {#% for x in organization.accountType_org_id.all %#}
-
-                {#% endfor %#}
-
-                {% include "organizations/_accountTypes.html" %}
-            {% endif %}
-        </div>
+    {% if organization.Transactions_org_id.count == 0 %}
+        <h3>No Transactions yet!</h3>
+    {% else %}
+        {% include "organizations/_transactions.html" %}
     {% endif %}
-
+    <a class="btn btn-success"
+       href="{% url 'organizations:new-transaction' org_id=organization.id %}"><span
+            class="glyphicon glyphicon-plus"></span> Create new</a>
 
 {% endblock %}

@@ -10,21 +10,19 @@
                 <th> ID</th>
                 <th> Name</th>
                 <th> Email</th>
-                <th> Main Organization</th>
                 <th> # Members</th>
                 </thead>
 
                 {% for org in UserOrganizations %}
-                    <tr>
+                    <tr class='clickable-row' data-href="{% url 'organizations:edit' pk=org.id %}">
 
                         <td> {{ org.id }} </td>
                         <td> {{ org.name }} </td>
                         <td> {{ org.email }} </td>
-                        <td> {{ org.main_org }} </td>
                         <td> {{ org.OrganizationMember_organization_id.count }} </td>
                         <td>
-                            <a href="{% url 'organizations:edit' pk=org.id %}"><span
-                                    title="Edit" class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="{% url 'organizations:detail' pk=org.id %}"><span
+                                    title="Manage" class="glyphicon glyphicon-cog"></span></a>
                         </td>
 
                     </tr>
@@ -39,4 +37,5 @@
                 class="glyphicon glyphicon-plus"></span> Create new</a>
 
     </div>
+
 {% endblock %}

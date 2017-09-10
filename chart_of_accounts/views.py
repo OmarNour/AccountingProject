@@ -6,9 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from chart_of_accounts.models import ChartOfAccounts
-from organizations.models import Organization
-from AccountTypes.models import AccountTypes
+from .models import ChartOfAccount, AccountType, Organization
 from .forms import CreateChartOfAccountForm, UpdateChartOfAccountForm
 
 
@@ -18,7 +16,7 @@ class CreateChartOfAccountView(LoginRequiredMixin, generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(CreateChartOfAccountView, self).get_context_data(**kwargs)
-        context['account_type'] = AccountTypes.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
+        context['account_type'] = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
         return context
 
     def get_form_kwargs(self):
@@ -28,13 +26,13 @@ class CreateChartOfAccountView(LoginRequiredMixin, generic.CreateView):
         return kwargs
 
     def get_success_url(self):
-        acc_typ_code = AccountTypes.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
+        acc_typ_code = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
         return reverse_lazy('organizations:edit-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
                                                                        'acc_typ_code': acc_typ_code.code,
                                                                        'pk': self.kwargs.get("acc_typ_code_id")})
 
     def form_valid(self, form):
-        account_type = get_object_or_404(AccountTypes, id=self.kwargs.get("acc_typ_code_id"))
+        account_type = get_object_or_404(AccountType, id=self.kwargs.get("acc_typ_code_id"))
         form.instance.type_code = account_type
         form.instance.created_by = self.request.user
         organization = get_object_or_404(Organization, pk=self.kwargs.get("org_id"))
@@ -48,11 +46,11 @@ class UpdateChartOfAccountView(LoginRequiredMixin, generic.UpdateView):
     template_name = "chart_of_accounts/chart_of_accounts_form.html"
 
     def get_queryset(self):
-        return ChartOfAccounts.objects
+        return ChartOfAccount.objects
 
     def get_context_data(self, **kwargs):
         context = super(UpdateChartOfAccountView, self).get_context_data(**kwargs)
-        context['account_type'] = AccountTypes.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
+        context['account_type'] = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
         return context
 
     def get_form_kwargs(self):
@@ -62,13 +60,13 @@ class UpdateChartOfAccountView(LoginRequiredMixin, generic.UpdateView):
         return kwargs
 
     def get_success_url(self):
-        acc_typ_code = AccountTypes.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
+        acc_typ_code = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
         return reverse_lazy('organizations:edit-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
                                                                        'acc_typ_code': acc_typ_code.code,
                                                                        'pk': self.kwargs.get("acc_typ_code_id")})
 
     def form_valid(self, form):
-        account_type = get_object_or_404(AccountTypes, id=self.kwargs.get("acc_typ_code_id"))
+        account_type = get_object_or_404(AccountType, id=self.kwargs.get("acc_typ_code_id"))
         form.instance.type_code = account_type
         form.instance.created_by = self.request.user
         organization = get_object_or_404(Organization, pk=self.kwargs.get("org_id"))

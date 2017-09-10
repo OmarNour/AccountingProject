@@ -26,6 +26,11 @@
 
     <link rel="stylesheet" href="{% static "css/accAppStyle.css" %}"/>
 
+    <link href="{% static 'css/default.css' %}" type="text/css" media="screen"/>
+    <script type="text/javascript" src="{% static 'js/jquery-1.3.2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.formset.js' %}"></script>
+    {% block extrahead %}{% endblock %}
+
 </head>
 
 <body>
@@ -34,7 +39,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <a class="navbar-brand" href="{% url 'home' %}" title="Home"><span
-                        class="glyphicon glyphicon-home"></span> Home</a>
+            class="glyphicon glyphicon-home"></span> Home</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,44 +50,60 @@
 
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
-                {% if user.OrganizationMember_user.count > 0 %}
+
                 <li class="nav-item"><a class="nav-link" href="{% url 'organizations:all' %}"><span
                         class="glyphicon glyphicon-globe"></span>
                     Organizations </a>
-                {% endif %}
 
-                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:accounts_types' %}"><span
-                        class="glyphicon glyphicon-th-list"></span>
-                    Account Types </a>
-                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:chart_of_accounts' %}"><span
-                        class="glyphicon glyphicon-th"></span>
-                    Chart Of Accounts</a>
-                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:all_transactions' %}"><span
-                    class="glyphicon glyphicon-list-alt"></span>
-                Transaction</a>
+                    {% if object.accountType_org_id.count > 0 %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:accounts_types' %}"><span
+                                class="glyphicon glyphicon-th-list"></span>
+                            Account Types </a>
+                        <li class="nav-item"><a class="nav-link"
+                                                href="{% url 'AccountingApp:chart_of_accounts' %}"><span
+                                class="glyphicon glyphicon-th"></span>
+                            Chart Of Accounts</a>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:all_transactions' %}"><span
+                            class="glyphicon glyphicon-list-alt"></span>
+                        Transaction</a>
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'organizations:new-bill' org_id=object.id %}"><span
+                            class="glyphicon glyphicon-bitcoin"></span>ill</a>
+                    {% endif %}
+
             {% endif %}
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+
             {# Some logic on what to display for last item#}
             {% if user.is_authenticated %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:logout' %}">{{ user }} <span
+                        class="glyphicon glyphicon-log-out"></span> Logout </a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:settings' %}"><span class="glyphicon glyphicon-tasks"></span>
+                <li class="nav-item"><a class="nav-link" href="{% url 'AccountingApp:settings' %}"><span
+                        class="glyphicon glyphicon-tasks"></span>
                     Settings</a></li>
                 {% if user.is_staff %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}"><span class="glyphicon glyphicon-queen"></span> Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'admin:index' %}"><span
+                            class="glyphicon glyphicon-queen"></span> Admin</a></li>
                 {% endif %}
             {% else %}
-                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:login' %}"><span class="glyphicon glyphicon-log-in"></span>
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:login' %}"><span
+                        class="glyphicon glyphicon-log-in"></span>
                     Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:signup' %}"><span class="glyphicon glyphicon-user"></span>
+                <li class="nav-item"><a class="nav-link" href="{% url 'users_accounts:signup' %}"><span
+                        class="glyphicon glyphicon-user"></span>
                     Signup</a></li>
             {% endif %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'contact-us' %}"><span class="glyphicon glyphicon-envelope"></span> Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact-us' %}"><span
+                    class="glyphicon glyphicon-envelope"></span> Contact Us</a></li>
 
         </ul>
+
     </div>
+
 </nav>
 
 <div>

@@ -8,12 +8,11 @@ from django.views import generic
 
 
 # Create your views here.
-from AccountingApp.models import TransactionSources, AccountTypesDrCr
-from AccountTypes.models import AccountTypes
-from chart_of_accounts.models import ChartOfAccounts
-from organizations.models import OrgExchangeRate, Organization
-from transactions.forms import TransactionForm
-from transactions.models import Transaction
+from AccountingApp.models import TransactionSources
+from account_types.models import AccountType
+from organizations.models import OrgExchangeRate
+from .forms import TransactionForm
+from .models import Transaction, Organization, ChartOfAccount
 
 
 class CreateTransactionView(LoginRequiredMixin, generic.CreateView):
@@ -101,9 +100,9 @@ def get_chart_of_accounts_type_code(org_id, account_type, account_code):
     # print(org_id)
     # print(account_type)
     # print(account_code)
-    return ChartOfAccounts.objects.get(org_id=org_id,
-                                       type_code_id=account_type,
-                                       code=account_code)
+    return ChartOfAccount.objects.get(org_id=org_id,
+                                      type_code_id=account_type,
+                                      code=account_code)
 
 
 def validate_transaction(org_id,
@@ -117,8 +116,8 @@ def validate_transaction(org_id,
         cr_type_code = get_chart_of_accounts_type_code(org_id, cr_type_code, cr_account_code)
         # print('validate_transaction')
         # print(dr_type_code.type_code.code)
-        dr_sign = AccountTypes.objects.get(org_id=org_id, code=dr_type_code.type_code.code)
-        cr_sign = AccountTypes.objects.get(org_id=org_id, code=cr_type_code.type_code.code)
+        dr_sign = AccountType.objects.get(org_id=org_id, code=dr_type_code.type_code.code)
+        cr_sign = AccountType.objects.get(org_id=org_id, code=cr_type_code.type_code.code)
         # print(dr_sign.dr_sign)
         if dr_sign.dr_sign == cr_sign.cr_sign:
             return False

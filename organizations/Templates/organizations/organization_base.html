@@ -5,21 +5,47 @@
         <div class="row">
             {% block org_content %}
                 <div class="col-md-4">
-                    {% block org_content_4_1 %}{% endblock %}
+                    {% block org_content_4_1 %}
+
+                    {% endblock %}
                 </div>
                 <div class="col-md-4">
-                    {% block org_content_4_2 %}{% endblock %}
+                    {% block org_content_4_2 %}
+
+                    {% endblock %}
                 </div>
                 <div class="col-md-4">
-                    {% block org_content_4_3 %}{% endblock %}
+                    {% block org_content_4_3 %}
+
+                    {% endblock %}
+
                 </div>
             {% endblock %}
 
+
             {% block related_org_content %}
-                {% block members_content %}{% endblock %}
-                {% block chart_of_accounts_content %}{% endblock %}
-                {% block transactions_content %}{% endblock %}
+                {% if object.id %}
+
+                    <div class="col-md-12">
+                        {% block members_content %}
+
+                        {% endblock %}
+                    </div>
+
+                    <div class="col-md-12">
+                        {% block chart_of_accounts_content %}
+
+                        {% endblock %}
+                    </div>
+
+                    <div class="col-md-12">
+                        {% block transactions_content %}
+
+                        {% endblock %}
+                    </div>
+                {% endif %}
             {% endblock %}
+
         </div>
     </div>
 

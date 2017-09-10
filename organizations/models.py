@@ -3,8 +3,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 
-from AccountingApp.models import Currencies,ExchangeRate
-from AccountingApp import views as acc_app_views
+from AccountingApp.models import Currencies, ExchangeRate
+from AccountingApp.views import get_exchange_rate
 
 User = get_user_model()
 # Create your models here.
@@ -15,7 +15,7 @@ class Organization(models.Model):
     owner = models.ForeignKey(User, default=User, related_name='organization_owner')
     name = models.CharField(null=False, blank=False, max_length=255)
     email = models.EmailField(null=True, blank=True)
-    main_org = models.ForeignKey('self', null=True, blank=True, related_name='organization_main_org')
+    # main_org = models.ForeignKey('self', null=True, blank=True, related_name='organization_main_org')
 
     created_by = models.ForeignKey(User, default=User, related_name='organization_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
@@ -29,12 +29,47 @@ class Organization(models.Model):
     def __str__(self):
         return '{}-{}'.format(self.id,self.name)
 
+#
+# class ActiveOrganizaition(models.Model):
+#     organization = models.OneToOneField(Organization, on_delete=models.CASCADE)
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#
+#     class Meta:
+#         unique_together = ('organization', 'user')
+
+
+class InvitedUsers(models.Model):
+    # send url if email is new, if exist, then send a notification to login and accept joining the Organization
+    # always insert record in OrganizationMember with user_accept=False
+    inviter_user = models.ForeignKey(User,related_name='inviter_users_user')
+    invite_to_org = models.ForeignKey(Organization, null=False, blank=False, related_name='invited_users_user_to_org')
+    invited_user_first_name = models.CharField(max_length=100, null=False,blank=False)
+    invited_user_last_name = models.CharField(max_length=100, null=False, blank=False)
+    invited_user_email = models.EmailField(null=False,blank=False)
+
+    invited_user = models.ForeignKey(User, null=True, blank=True, related_name='invited_users_user')
+    invited_date = models.DateTimeField(default=timezone.now, editable=False)
+
+    invitation_url = models.URLField(null=False)
+    invitation_sent = models.BooleanField(default=False)
+    invitation_accepted_date = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        unique_together = ('invite_to_org', 'invited_user_email')
+
+    def __str__(self):
+        return self.invited_user_email
+
 
 class OrganizationMember(models.Model):
+    # user_accept will be True if s/he created new Organization or signup from a an invitation link
     organization_id = models.ForeignKey(Organization,
                                         related_name="OrganizationMember_organization_id",
                                         on_delete=models.PROTECT)
     user = models.ForeignKey(User,related_name='OrganizationMember_user')
+    invitation_id = models.ForeignKey(InvitedUsers, null=True, related_name='OrganizationMember_invitation_id')
+    # user_accept = models.BooleanField(null=False, default=False)
+    active = models.BooleanField(null=False,default=False)
 
     def __str__(self):
         return self.user.username
@@ -73,7 +108,7 @@ class OrgExchangeRate(models.Model):
 
     swapped_current_rate = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
     override_rate = models.DecimalField(max_digits=30, decimal_places=6, default=0, null=False, blank=False)
-    last_updated = models.DateTimeField(default=timezone.now(), null=False, blank=False)
+    last_updated = models.DateTimeField(default=timezone.now, null=False, blank=False)
 
     """
     created_by = models.ForeignKey(User, default=User, related_name='OrgExchangeRate_created_by')
@@ -89,6 +124,6 @@ class OrgExchangeRate(models.Model):
     def __str__(self):
         return '{} To {}: {}'.format(self.from_currency_id,
                                      self.to_currency_id,
-                                     self.override_rate if self.override_rate > 0 else acc_app_views.get_exchange_rate(self.from_currency_id,
+                                     self.override_rate if self.override_rate > 0 else get_exchange_rate(self.from_currency_id,
                                                                                                                        self.to_currency_id))
 

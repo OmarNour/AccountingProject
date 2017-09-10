@@ -1,7 +1,7 @@
 {% extends "organizations/organization_base.html" %}
 {% load bootstrap3 %}
 
-{% block org_content_4_1 %}
+{% block org_content_4_2 %}
 
     <h2> {% if object.id %}Update Organization {% else %} Create Organization {% endif %}</h2>
     <form method="POST" id="organizationForm">
@@ -20,78 +20,5 @@
 
 {% endblock %}
 
-{% block org_content_4_2 %}
-    {% if object.id %}
-        {% if organization.OrgCurrencies_org_id.count == 0 %}
-            <h3>No Currencies Defined!</h3>
-        {% else %}
-            {% include "organizations/_currencies.html" %}
-        {% endif %}
 
-        <a class="btn btn-success"
-           href="{% url 'organizations:add-currency' org_id=organization.id %}"><span
-                class="glyphicon glyphicon-plus"></span> Add Currency</a>
-    {% endif %}
-{% endblock %}
 
-{% block org_content_4_3 %}
-    {% if object.id %}
-        {% for curr in organization.OrgCurrencies_org_id.all %}
-            {% if curr.base_currency %}
-                {% if organization.OrgExchangeRate_Org_id.count == 0 %}
-                    <h3>No Rates Available!</h3>
-                {% else %}
-                    {% include "organizations/_exchange_rates.html" %}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-{% endblock %}
-
-{% block related_org_content %}
-    {% if object.id %}
-        {% block members_content %}
-            <div class="col-md-12">
-                {% if organization.OrganizationMember_organization_id.count == 0 %}
-                    <h3>No Members yet!</h3>
-                {% else %}
-                    {% include "organizations/_member.html" %}
-                {% endif %}
-            </div>
-        {% endblock %}
-
-        {% block chart_of_accounts_content %}
-            <div class="col-md-12">
-                {% if organization.accountType_org_id.count == 0 %}
-                    <h3>No Account Types Defiened!</h3>
-                {% else %}
-
-                    {#% if organization.accountType_org_id == 0 %#}
-                    {#% for x in organization.accountType_org_id.all %#}
-
-                    {#% endfor %#}
-
-                    {% include "organizations/_accountTypes.html" %}
-                {% endif %}
-
-                <a class="btn btn-success"
-                   href="{% url 'organizations:create-account-type' org_id=organization.id %}"><span
-                        class="glyphicon glyphicon-plus"></span> Create new</a>
-
-            </div>
-        {% endblock %}
-
-        {% block transactions_content %}
-            <div class="col-md-12">
-                {% if organization.Transactions_org_id.count == 0 %}
-                    <h3>No Transactions yet!</h3>
-                {% else %}
-                    {% include "organizations/_transactions.html" %}
-                {% endif %}
-            <a class="btn btn-success" href="{% url 'organizations:new-transaction' org_id=organization.id %}"><span
-                class="glyphicon glyphicon-plus"></span> Create new</a>
-            </div>
-        {% endblock %}
-
-    {% endif %}
-{% endblock %}

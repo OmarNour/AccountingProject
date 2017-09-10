@@ -1,0 +1,25 @@
+{% extends "AccountingApp/base.html" %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            {% block bill_content %}
+                <div class="col-md-4">
+                    {% block bill_content_4_1 %}{% endblock %}
+                </div>
+                <div class="col-md-4">
+                    {% block bill_content_4_2 %}{% endblock %}
+                </div>
+                <div class="col-md-4">
+                    {% block bill_content_4_3 %}{% endblock %}
+                </div>
+            {% endblock %}
+            <div class="col-md-12">
+                {% block related_bill_content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

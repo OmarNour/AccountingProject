@@ -1,0 +1,74 @@
+{% extends "bill/bill_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block extrahead %}
+    <script type="text/javascript">
+        $(function () {
+            $('#id_orders_table').find('tbody tr').formset({
+                // For inline formsets, be sure to set the prefix, as the default prefix
+                // ('form') isn't correct.
+                // Django appears to generate the prefix from the lowercase plural
+                // name of the related model, with camel-case converted to underscores.
+                prefix: 'bill_details_form'
+            })
+        })
+    </script>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2> {% if object.id %} Edit {% else %} New {% endif %} Bill </h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                {% bootstrap_form form %}
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <h3>Details</h3>
+                    <table class="table table-hover">
+
+                        <thead>
+                        <th> Item</th>
+                        <th> Description</th>
+                        <th> Qty</th>
+                        <th> Unit Price</th>
+                        <th> Amount</th>
+                        <th> Dr Account</th>
+                        <th> Cr Account</th>
+                        </thead>
+
+
+                        {% for bill in bill_details %}
+                            <tr>
+                                {% for items in bill %}
+                                    <td>
+                                        {% if items.name != 'DELETE' %}
+                                            {% bootstrap_field items %}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+
+
+                    </table>
+
+
+                </div>
+                {{ bill_details.management_form }}
+                <input type="submit" value="Save" class="btn btn-primary btn-large">
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+
+

@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^(?i)login/$',auth_views.LoginView.as_view(template_name="login.html"),name='login'),
     url(r'^(?i)logout/$', auth_views.LogoutView.as_view(), name="logout"),
     url(r'^(?i)signup/$', views.SignUp.as_view(), name="signup"),
+
+    url(r'^(?i)invitation/signup/(?P<org_id>\w+)/(?P<inv_id>\w+)$', views.InvitationSignUp.as_view(), name="invitation-signup"),
 ]

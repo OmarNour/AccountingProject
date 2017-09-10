@@ -3,18 +3,18 @@ from django.db import models
 # Create your models here.
 from django.urls import reverse
 
-from AccountTypes.models import AccountTypes
+from account_types.models import AccountType
 from organizations.models import Organization
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
 
-class ChartOfAccounts(models.Model):
+class ChartOfAccount(models.Model):
     org_id = models.ForeignKey(Organization, related_name='ChartOfAccounts_org_id')
     code = models.IntegerField(null=False,blank=False)
     name = models.CharField(null=False,blank=False,max_length=500)
-    type_code = models.ForeignKey(AccountTypes, null=False, blank=False, related_name='ChartOfAccounts_type_code')
+    type_code = models.ForeignKey(AccountType, null=False, blank=False, related_name='ChartOfAccounts_type_code')
     main_code = models.ForeignKey('self', null=True, blank=True, related_name='ChartOfAccounts_main_code')
 
     created_by = models.ForeignKey(User, default=User, related_name='ChartOfAccounts_created_by')

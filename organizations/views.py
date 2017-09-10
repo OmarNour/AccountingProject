@@ -14,10 +14,9 @@ from django.views import generic
 from django.contrib.auth.models import User
 
 from AccountingApp.models import ExchangeRate, Currencies
-from AccountingApp.views import get_exchange_rate
-from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm, CurrenciesForm, \
-    OverrideOrgExchangeRateForm
-from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate
+from organizations.forms import OrganizationUpdateForm, CreateOrganizationForm, CurrenciesForm,\
+    OverrideOrgExchangeRateForm, InviteUserForm
+from .models import Organization, OrganizationMember, OrgCurrencies, OrgExchangeRate, InvitedUsers
 
 
 class CreateOrganization(LoginRequiredMixin, generic.CreateView):
@@ -48,7 +47,9 @@ class OrganizationList(LoginRequiredMixin,generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(OrganizationList, self).get_context_data(**kwargs)
-        context['UserOrganizations'] = Organization.objects.filter(owner=self.request.user).order_by('id')
+        related_orgs = OrganizationMember.objects.filter(user=self.request.user).order_by('id')
+        #context['UserOrganizations'] = Organization.objects.filter(owner=self.request.user).order_by('id')
+        context['UserOrganizations'] = Organization.objects.filter(OrganizationMember_organization_id__in= related_orgs).order_by('id')
         return context
 
 
@@ -68,19 +69,24 @@ class OrganizationUpdateView(LoginRequiredMixin,generic.UpdateView):
         return Organization.objects.filter(id=self.kwargs.get("pk"))
 
     def get_success_url(self):
-        return reverse_lazy('organizations:all')
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("pk")})
 
     def form_valid(self, form):
         form.instance.modified_by = self.request.user
         form.instance.modified_date = timezone.now()
+        # form.save(commit=True)
+        #
+        # active_org = ActiveOrganizaition(organization_id=self.kwargs.get("pk"))
+        # active_org.save()
+
         return super(OrganizationUpdateView, self).form_valid(form)
 
-    def get_form_kwargs(self):
-        kwargs = super(OrganizationUpdateView, self).get_form_kwargs()
-        # kwargs.update({'user': self.request.user})
-        kwargs.update({'owner_org_id': self.kwargs.get("pk")})
-        kwargs.update({'exclude_org_id': self.kwargs.get("pk")})
-        return kwargs
+    # def get_form_kwargs(self):
+    #     kwargs = super(OrganizationUpdateView, self).get_form_kwargs()
+    #     # kwargs.update({'user': self.request.user})
+    #     kwargs.update({'owner_org_id': self.kwargs.get("pk")})
+    #     kwargs.update({'exclude_org_id': self.kwargs.get("pk")})
+    #     return kwargs
 
 
 class OrganizationDeleteView(LoginRequiredMixin,generic.DeleteView):
@@ -88,11 +94,39 @@ class OrganizationDeleteView(LoginRequiredMixin,generic.DeleteView):
     success_url = reverse_lazy('organizations:all')
 
 
+class InviteUserView(LoginRequiredMixin, generic.CreateView):
+    form_class = InviteUserForm
+    template_name = 'invitedusers_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
+
+    def get_form_kwargs(self):
+        kwargs = super(InviteUserView, self).get_form_kwargs()
+        kwargs.update({'org_id': self.kwargs.get("org_id")})
+        return kwargs
+
+    def form_valid(self, form):
+        form.instance.inviter_user = self.request.user
+        form.instance.invite_to_org = get_object_or_404(Organization, pk=self.kwargs.get("org_id"))
+        form.save(commit=True)
+
+        try:
+            User.objects.get(email=form.instance.invited_user_email)
+        except User.DoesNotExist:
+            form.instance.invitation_url = 'accounts/invitation/signup/' \
+                                           + str(form.instance.invite_to_org.id) \
+                                           + '/' + str(InvitedUsers.objects.get(invite_to_org=form.instance.invite_to_org,
+                                                                                invited_user_email=form.instance.invited_user_email).id)
+
+        return super(InviteUserView, self).form_valid(form)
+
+
 class AddMember(LoginRequiredMixin, generic.RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
 
-        return reverse("organizations:edit", kwargs={"pk": self.kwargs.get("org_id")})
+        return reverse("organizations:detail", kwargs={"pk": self.kwargs.get("org_id")})
 
     def get(self, request, *args, **kwargs):
         """""
@@ -119,7 +153,7 @@ class AddMember(LoginRequiredMixin, generic.RedirectView):
 class DeleteMember(LoginRequiredMixin, generic.RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse("organizations:edit", kwargs={"pk": self.kwargs.get("org_id")})
+        return reverse("organizations:detail", kwargs={"pk": self.kwargs.get("org_id")})
 
     def get(self, request, *args, **kwargs):
 
@@ -147,7 +181,7 @@ class CreateCurrenciesView(LoginRequiredMixin, generic.CreateView):
     template_name = 'organizations/orgcurrencies_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
 
     def get_form_kwargs(self):
         kwargs = super(CreateCurrenciesView, self).get_form_kwargs()
@@ -175,7 +209,7 @@ class UpdateCurrenciesView(LoginRequiredMixin, generic.UpdateView):
         return OrgCurrencies.objects
 
     def get_success_url(self):
-        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
 
     def get_form_kwargs(self):
         kwargs = super(UpdateCurrenciesView, self).get_form_kwargs()
@@ -196,7 +230,7 @@ class DeleteCurrenciesView(LoginRequiredMixin, generic.DeleteView):
     model = OrgCurrencies
 
     def get_success_url(self):
-        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
 
 
 class OverrideOrgExchangeRateView(LoginRequiredMixin, generic.UpdateView):
@@ -207,7 +241,7 @@ class OverrideOrgExchangeRateView(LoginRequiredMixin, generic.UpdateView):
         return OrgExchangeRate.objects
 
     def get_success_url(self):
-        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
 
     def get_form_kwargs(self):
         kwargs = super(OverrideOrgExchangeRateView, self).get_form_kwargs()

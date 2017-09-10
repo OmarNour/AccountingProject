@@ -44,9 +44,13 @@ INSTALLED_APPS = [
     'users_accounts',
     'AccountingApp',
     'organizations',
-    'AccountTypes',
+    'account_types',
     'chart_of_accounts',
-    'transactions'
+    'transactions',
+    'vendor',
+    'inventory',
+    'purchase_order',
+    'bill'
 ]
 
 MIDDLEWARE = [
@@ -90,7 +94,7 @@ WSGI_APPLICATION = 'AccountingProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.accountingDB'),
     }
 }
 """
