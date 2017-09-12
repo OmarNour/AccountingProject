@@ -61,11 +61,11 @@ class TransactionForm(forms.ModelForm):
         # print(self.cleaned_data['dr_account_code'].code)
         # print(self.cleaned_data['cr_account_code'].type_code.id)
         # print(self.cleaned_data['cr_account_code'].code)
-        if not trnx_views.validate_transaction(self.url_org_id,
-                                               self.cleaned_data['dr_account_code'].type_code.id,
-                                               self.cleaned_data['dr_account_code'].code,
-                                               self.cleaned_data['cr_account_code'].type_code.id,
-                                               self.cleaned_data['cr_account_code'].code):
+        if not trnx_views.valid_transaction(self.url_org_id,
+                                            self.cleaned_data['dr_account_code'].type_code.id,
+                                            self.cleaned_data['dr_account_code'].code,
+                                            self.cleaned_data['cr_account_code'].type_code.id,
+                                            self.cleaned_data['cr_account_code'].code):
             raise forms.ValidationError("Dr and Cr Accounts are Not Balanced!")
 
 

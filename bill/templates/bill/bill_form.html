@@ -39,7 +39,7 @@
                         <th> Description</th>
                         <th> Qty</th>
                         <th> Unit Price</th>
-                        <th> Amount</th>
+                        {#                        <th> Amount</th>#}
                         <th> Dr Account</th>
                         <th> Cr Account</th>
                         </thead>
@@ -64,6 +64,7 @@
                 </div>
                 {{ bill_details.management_form }}
                 <input type="submit" value="Save" class="btn btn-primary btn-large">
+                <a class="btn btn-default" href="{{ request.META.HTTP_REFERER }}"> Cancel</a>
             </div>
 
         </form>

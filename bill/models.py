@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from chart_of_accounts.models import ChartOfAccount
 from inventory.models import Inventory
 from purchase_order.models import PurchaseOrder
+from transactions.models import Transaction
 from vendor.models import Vendor
 
 User = get_user_model()
@@ -42,15 +43,17 @@ class BillDetails(models.Model):
     dr_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='BillDetails_dr_account')
     cr_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='BillDetails_cr_account')
 
+    trnx_number = models.ForeignKey(Transaction, null=True, blank=True, related_name='BillDetails_trnx_number')
+
     created_by = models.ForeignKey(User, default=User, related_name='BillDetails_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     modified_by = models.ForeignKey(User, null=True, blank=True, related_name='BillDetails_modified_by')
     updated_date = models.DateTimeField(null=True, blank=True, editable=False)
 
-    def save(self):
-        self.amount = self.qty * self.unit_price
-        super(BillDetails, self).save()
+    # def save(self):
+    #     self.amount = self.qty * self.unit_price
+    #     super(BillDetails, self).save()
 
     def __str__(self):
         return self.bill.bill_no

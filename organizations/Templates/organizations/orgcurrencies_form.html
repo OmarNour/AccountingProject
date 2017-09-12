@@ -13,6 +13,6 @@
         <input type="submit" value="Add" class="btn btn-primary btn-large">
     {% endif %}
 
-    <a class="btn btn-default" href="{{ view.get_success_url }}"> Cancel</a>
+    <a class="btn btn-default" href="{{ request.META.HTTP_REFERER }}"> Cancel</a>
 </form>
 {% endblock %}

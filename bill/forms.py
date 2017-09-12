@@ -2,8 +2,11 @@ from django.contrib.auth.forms import forms
 from django.forms import widgets, inlineformset_factory
 
 from bill.models import Bill, BillDetails
+from chart_of_accounts.models import ChartOfAccount
+from inventory.models import Inventory
 from organizations.models import OrgCurrencies
 from purchase_order.models import PurchaseOrder
+from transactions.views import valid_transaction
 from vendor.models import Vendor
 
 
@@ -48,7 +51,7 @@ class BillDetailsForm(forms.ModelForm):
                   'description',
                   'qty',
                   'unit_price',
-                  'amount',
+                  # 'amount',
                   'dr_account',
                   'cr_account'
                   )
@@ -56,15 +59,42 @@ class BillDetailsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.url_org_id = kwargs.pop('org_id') # how can i get the org ID
         super().__init__(*args, **kwargs)
-        print(self.url_org_id)
+        # print(self.url_org_id)
+
         self.fields['item'].label = ''
         self.fields['description'].label = ''
         self.fields['qty'].label = ''
         self.fields['unit_price'].label = ''
-        self.fields['amount'].label = ''
-        self.fields['dr_account'].label = ''
+        # self.fields['amount'].label = ''
         self.fields['cr_account'].label = ''
+        items = Inventory.objects.filter(org_id=self.url_org_id).order_by('item_id')
+        self.fields['item'] = forms.ModelChoiceField(queryset=items,
+                                                     required=False,
+                                                     label='',
+                                                     widget=widgets.Select(attrs={'size': 1}))
+        dr_accounts = ChartOfAccount.objects.filter(org_id=self.url_org_id).order_by('type_code', 'name')
+        cr_accounts = ChartOfAccount.objects.filter(org_id=self.url_org_id).order_by('type_code', 'name')
+        self.fields['dr_account'] = forms.ModelChoiceField(queryset=dr_accounts,
+                                                           required=True,
+                                                           label='',
+                                                           widget=widgets.Select(attrs={'size': 1}))
+        self.fields['cr_account'] = forms.ModelChoiceField(queryset=cr_accounts,
+                                                           required=True,
+                                                           label='',
+                                                           widget=widgets.Select(attrs={'size': 1}))
+
+    def clean_cr_account(self):
+        cr_account = self.cleaned_data
+        if not valid_transaction(org_id=self.url_org_id,
+                                 dr_type_code=self.cleaned_data['dr_account'].type_code.id,
+                                 dr_account_code=self.cleaned_data['dr_account'].code,
+                                 cr_type_code=self.cleaned_data['cr_account'].type_code.id,
+                                 cr_account_code=self.cleaned_data['cr_account'].code):
+            raise forms.ValidationError("Dr and Cr Accounts are Not Balanced!")
+        return cr_account.get('cr_account')
+        # print(self.cleaned_data['description'])
+        # raise forms.ValidationError("Items in a set must be distinct.")
 
 
-BillDetailsFormSet = inlineformset_factory(Bill, BillDetails, form=BillDetailsForm, extra=5)
+BillDetailsFormSet = inlineformset_factory(Bill, BillDetails, form=BillDetailsForm, extra=5, min_num=1, validate_min=True)
 

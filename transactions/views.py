@@ -10,7 +10,8 @@ from django.views import generic
 # Create your views here.
 from AccountingApp.models import TransactionSources
 from account_types.models import AccountType
-from organizations.models import OrgExchangeRate
+from bill.models import BillDetails
+from organizations.models import OrgExchangeRate, OrgCurrencies
 from .forms import TransactionForm
 from .models import Transaction, Organization, ChartOfAccount
 
@@ -20,7 +21,7 @@ class CreateTransactionView(LoginRequiredMixin, generic.CreateView):
     template_name = 'transactions/transaction_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('organizations:edit', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
         # return reverse_lazy('organizations:transactions', kwargs={'org_id': self.kwargs.get("org_id")})
 
     def get_context_data(self, **kwargs):
@@ -58,8 +59,72 @@ class TransactionsList(LoginRequiredMixin, generic.ListView):
         context['OrgTransactions'] = Transaction.objects.filter(org_id=self.kwargs.get("org_id")).order_by('-id')
         return context
 
+                # ################################################################################# #
+                # ############################### standalone functions ############################ #
+                # ################################################################################# #
 
-# ############################### standalone functions ############################ #
+
+def create_new_transaction(org_id, source_key, source_record, validate_transaction=False):
+    create_trans = False
+    source = TransactionSources.objects.get(source_key=source_key)
+    if source_key == 'BILL':
+        # source_record = BillDetails.objects.get(id=source_record)
+        transaction_date = source_record.bill.bill_date
+        value_date = source_record.bill.due_date
+        amount = source_record.amount
+        dr_account_code = source_record.dr_account
+        cr_account_code = source_record.cr_account
+        currency_id = source_record.bill.currency
+        base_currency_id = get_base_currency(org_id)
+        exchange_rate = get_exchange_rate(org_id, currency_id, base_currency_id)
+        base_eqv_amount = amount * exchange_rate
+        narrative = source_record.description
+        transaction_source = source
+        reference_number = source_record.id
+        created_by = source_record.created_by
+        created_date = source_record.created_date
+
+        create_trans = True
+    elif source_key == 'INV':
+        pass
+    elif source_key == 'ECLM':
+        pass
+    else:
+        create_trans = False
+
+    if create_trans:
+        new_transaction = Transaction.objects.create(org_id=org_id,
+                                   transaction_id=get_new_transaction_id(org_id),
+                                   transaction_date=transaction_date,
+                                   value_date=value_date,
+                                   amount=amount,
+                                   dr_account_code=dr_account_code,
+                                   cr_account_code=cr_account_code,
+                                   currency_id=currency_id,
+                                   base_currency_id=base_currency_id,
+                                   exchange_rate=exchange_rate,
+                                   base_eqv_amount=base_eqv_amount,
+                                   narrative=narrative,
+                                   void=False,
+                                   transaction_source=transaction_source,
+                                   reference_number=reference_number,
+                                   created_by=created_by,
+                                   created_date=created_date
+                                   )
+        if source_key == 'BILL':
+            BillDetails.objects.filter(id=source_record.id).update(trnx_number=new_transaction)
+        elif source_key == 'INV':
+            pass
+        elif source_key == 'ECLM':
+            pass
+
+
+def get_base_currency(org_id):
+    # print(org_id.id)
+    return OrgCurrencies.objects.get(Org_id=org_id,
+                                     base_currency=True)
+
+
 def get_new_transaction_id(org_id):
     last_trnx_id = Transaction.objects.filter(org_id=org_id).order_by('id').last()
     if not last_trnx_id:
@@ -105,16 +170,16 @@ def get_chart_of_accounts_type_code(org_id, account_type, account_code):
                                       code=account_code)
 
 
-def validate_transaction(org_id,
-                         dr_type_code,
-                         dr_account_code,
-                         cr_type_code,
-                         cr_account_code
-                         ):
+def valid_transaction(org_id,
+                      dr_type_code,
+                      dr_account_code,
+                      cr_type_code,
+                      cr_account_code
+                      ):
     if dr_account_code != cr_account_code:
         dr_type_code = get_chart_of_accounts_type_code(org_id, dr_type_code, dr_account_code)
         cr_type_code = get_chart_of_accounts_type_code(org_id, cr_type_code, cr_account_code)
-        # print('validate_transaction')
+        # print('valid_transaction')
         # print(dr_type_code.type_code.code)
         dr_sign = AccountType.objects.get(org_id=org_id, code=dr_type_code.type_code.code)
         cr_sign = AccountType.objects.get(org_id=org_id, code=cr_type_code.type_code.code)

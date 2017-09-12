@@ -26,10 +26,13 @@ class CreateChartOfAccountView(LoginRequiredMixin, generic.CreateView):
         return kwargs
 
     def get_success_url(self):
+        # print(self.request.META.get('HTTP_REFERER'))
+        # return HttpResponseRedirect(self.request.META.get('HTTP_REFERER'))
         acc_typ_code = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
-        return reverse_lazy('organizations:edit-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
-                                                                       'acc_typ_code': acc_typ_code.code,
-                                                                       'pk': self.kwargs.get("acc_typ_code_id")})
+        # return reverse_lazy('organizations:detail', kwargs={'pk': self.kwargs.get("org_id")})
+        return reverse_lazy('organizations:detail-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
+                                                                         'acc_typ_code': acc_typ_code.code,
+                                                                         'pk': self.kwargs.get("acc_typ_code_id")})
 
     def form_valid(self, form):
         account_type = get_object_or_404(AccountType, id=self.kwargs.get("acc_typ_code_id"))
@@ -61,9 +64,9 @@ class UpdateChartOfAccountView(LoginRequiredMixin, generic.UpdateView):
 
     def get_success_url(self):
         acc_typ_code = AccountType.objects.filter(id=self.kwargs.get("acc_typ_code_id")).get()
-        return reverse_lazy('organizations:edit-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
-                                                                       'acc_typ_code': acc_typ_code.code,
-                                                                       'pk': self.kwargs.get("acc_typ_code_id")})
+        return reverse_lazy('organizations:detail-account-type', kwargs={'org_id': self.kwargs.get("org_id"),
+                                                                         'acc_typ_code': acc_typ_code.code,
+                                                                         'pk': self.kwargs.get("acc_typ_code_id")})
 
     def form_valid(self, form):
         account_type = get_object_or_404(AccountType, id=self.kwargs.get("acc_typ_code_id"))

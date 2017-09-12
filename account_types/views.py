@@ -45,12 +45,17 @@ class AccountTypesListView(LoginRequiredMixin,SelectRelatedMixin, generic.ListVi
     # select_related = 'org_id'
 
 
+class AccountTypeDetailView(LoginRequiredMixin,generic.DetailView):
+    model = AccountType
+    template_name = "AccountTypes/accounttype_detail.html"
+
+
 class AccountTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = UpdateAccountTypeForm
     # fields = ('id', 'code', 'name', 'main_code')
     template_name = "AccountTypes/accounttypes_form.html"
-    org_id = None
-    acc_typ_code = None
+    # org_id = None
+    # acc_typ_code = None
 
     def get_queryset(self):
         return AccountType.objects.filter(org_id_id=self.kwargs.get("org_id"))# implicity filters with pk givin from url

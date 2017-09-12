@@ -1,7 +1,9 @@
 {% extends "organizations/organization_base.html" %}
 {% load bootstrap3 %}
 {% block org_content_4_1 %}
-    {% if object.id %} <h3>{{ object.name }} <a href="{% url 'organizations:edit' pk=object.id %}"><span title="Edit" class="glyphicon glyphicon-pencil"></span></a></h3>{% endif %}
+    {% if object.id %}<h3>{{ object.name }} <a href="{% url 'organizations:edit' pk=object.id %}"><span title="Edit"
+                                                                                                        class="glyphicon glyphicon-pencil"></span></a>
+    </h3>{% endif %}
 {% endblock %}
 
 {% block org_content_4_2 %}
@@ -48,18 +50,8 @@
     {% if organization.accountType_org_id.count == 0 %}
         <h3>No Account Types Defiened!</h3>
     {% else %}
-
-        {#% if organization.accountType_org_id == 0 %#}
-        {#% for x in organization.accountType_org_id.all %#}
-
-        {#% endfor %#}
-
         {% include "organizations/_accountTypes.html" %}
     {% endif %}
-
-    <a class="btn btn-success"
-       href="{% url 'organizations:create-account-type' org_id=organization.id %}"><span
-            class="glyphicon glyphicon-plus"></span> Create new</a>
 
 {% endblock %}
 

@@ -25,6 +25,7 @@ urlpatterns = [
         name='create-account-type'),
     url(r'^(?i)delete-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)$', account_types_views.DeleteAccountType.as_view(), name='delete-account-type'),
     url(r'^(?i)edit-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)-(?P<pk>\w+)$', account_types_views.AccountTypeUpdateView.as_view(), name='edit-account-type'),
+    url(r'^(?i)detail-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)-(?P<pk>\w+)$', account_types_views.AccountTypeDetailView.as_view(), name='detail-account-type'),
 
     # handling chart of accounts
     url(r'^(?i)new-account/(?P<org_id>\w+)-(?P<acc_typ_code_id>\w+)$', chart_of_accounts_views.CreateChartOfAccountView.as_view(), name='create-account'),
