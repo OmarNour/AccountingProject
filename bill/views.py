@@ -1,7 +1,6 @@
 from decimal import Decimal
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.forms import formset_factory
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views import generic
@@ -11,6 +10,7 @@ from bill.models import Bill, BillDetails
 from chart_of_accounts.models import ChartOfAccount
 from inventory.models import Inventory
 from organizations.models import Organization
+from tax.models import Tax
 from transactions.views import create_new_transaction
 
 
@@ -28,7 +28,7 @@ class BillView(LoginRequiredMixin, generic.CreateView):
 
         if self.request.POST:
             context['bill_details'] = BillDetailsFormSet(self.request.POST,
-                                                      form_kwargs={'org_id': self.kwargs.get("org_id")})
+                                                         form_kwargs={'org_id': self.kwargs.get("org_id")})
         else:
             context['bill_details'] = BillDetailsFormSet(form_kwargs={'org_id': self.kwargs.get("org_id")})
         return context
@@ -42,6 +42,8 @@ class BillView(LoginRequiredMixin, generic.CreateView):
             form.instance.org_id = organization
             form.instance.created_by = self.request.user
             form.instance.created_date = timezone.datetime.now()
+            form.instance.total_amount = 0
+            form.instance.total_tax_amount = 0
 
             # print(self.request.POST)
             # bill_details.instance.bill = self.object
@@ -59,24 +61,39 @@ class BillView(LoginRequiredMixin, generic.CreateView):
                             item = None
 
                         dr_account = ChartOfAccount.objects.get(id=int(self.request.POST['BillDetails_bill-'+str(i)+'-dr_account']))
-
-                        cr_account = ChartOfAccount.objects.get(id=int(self.request.POST[
-                                                                    'BillDetails_bill-' + str(i) + '-cr_account']))
+                        cr_account = ChartOfAccount.objects.get(id=int(self.request.POST['BillDetails_bill-'+str(i)+'-cr_account']))
                         qty = int(self.request.POST['BillDetails_bill-' + str(i) + '-qty'])
                         unit_price = Decimal(self.request.POST['BillDetails_bill-' + str(i) + '-unit_price'])
+                        tax = Tax.objects.get(id=int(self.request.POST['BillDetails_bill-' + str(i) + '-tax']))
                         amount = qty * unit_price
+
+                        # print(self.object.amounts_are.id)
+                        if self.object.amounts_are.id == 1:
+                            # Tax Exclusive
+                            tax_amount = amount * (tax.total_tax_pct/100)
+                        elif self.object.amounts_are.id == 2:
+                            # Tax Inclusive
+                            tax_amount = (amount * tax.total_tax_pct)/(100+tax.total_tax_pct)
+                        else:
+                            # Tax Exempted
+                            tax_amount = 0
+
                         bill_record = BillDetails.objects.create(bill=self.object,
                                                                  item=item,
                                                                  description=self.request.POST['BillDetails_bill-'+str(i)+'-description'],
                                                                  qty=qty,
                                                                  unit_price=unit_price,
                                                                  amount=amount,
+                                                                 tax_amount=tax_amount,
                                                                  dr_account=dr_account,
                                                                  cr_account=cr_account,
+                                                                 tax=tax,
                                                                  created_by=bill_details.instance.created_by,
                                                                  created_date=bill_details.instance.created_date,
                                                    )
                         # print(self.object.org_id)
+                        form.instance.total_amount += amount
+                        form.instance.total_tax_amount += tax_amount
                         create_new_transaction(org_id=self.object.org_id,
                                                source_key='BILL',
                                                source_record=bill_record)

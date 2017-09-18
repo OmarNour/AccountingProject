@@ -1,9 +1,12 @@
 from django.db import models
+
+from AccountingApp.models import LOV
 from organizations.models import Organization, OrgCurrencies
 from django.contrib.auth import get_user_model
 from chart_of_accounts.models import ChartOfAccount
 from inventory.models import Inventory
 from purchase_order.models import PurchaseOrder
+from tax.models import Tax
 from transactions.models import Transaction
 from vendor.models import Vendor
 
@@ -16,6 +19,9 @@ class Bill(models.Model):
     po_number = models.ForeignKey(PurchaseOrder, null=True, blank=True, related_name='Bill_po_number')
     currency = models.ForeignKey(OrgCurrencies, null=False, blank=False, related_name='Bill_currency')
     bill_date = models.DateField(null=False,blank=False)
+    amounts_are = models.ForeignKey(LOV, null=False, blank=False, related_name='Bill_amounts_are_LOV')
+    total_amount = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
+    total_tax_amount = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
     due_date = models.DateField(null=False, blank=False)
     vendor = models.ForeignKey(Vendor, null=False, blank=False, related_name='bill_vendor')
 
@@ -39,6 +45,8 @@ class BillDetails(models.Model):
     qty = models.IntegerField(null=False,blank=False)
     unit_price = models.DecimalField(max_digits=30, decimal_places=6, null=False,blank=False)
     amount = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
+    tax = models.ForeignKey(Tax, null=True, blank=True, related_name='BillDetails_tax')
+    tax_amount = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False, default=0)
 
     dr_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='BillDetails_dr_account')
     cr_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='BillDetails_cr_account')

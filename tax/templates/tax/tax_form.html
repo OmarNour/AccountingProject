@@ -1,10 +1,10 @@
-{% extends "bill/bill_base.html" %}
+{% extends "tax/tax_base.html" %}
 
 {% load bootstrap3 %}
 
 {% block content %}
     <div class="container">
-        <h2> {% if object.id %} Edit {% else %} New {% endif %} Bill </h2>
+        <h2> {% if object.id %} Edit {% else %} New {% endif %} Tax </h2>
 
         <form method="post">
             {% csrf_token %}
@@ -16,27 +16,22 @@
             </div>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <h3>Details</h3>
+                    <h3>Components</h3>
                     <table class="table table-hover">
 
                         <thead>
-                        <th> Item</th>
                         <th> Description</th>
-                        <th> Qty</th>
-                        <th> Unit Price</th>
-                        {#                        <th> Amount</th>#}
-                        <th> Dr Account</th>
-                        <th> Cr Account</th>
-                        <th>Tax</th>
+                        <th> Percentage %</th>
+                        <th> Compound</th>
                         </thead>
 
 
-                        {% for bill in bill_details %}
+                        {% for tax_component in tax_components %}
                             <tr>
-                                {% for items in bill %}
+                                {% for component in tax_component %}
                                     <td>
-                                        {% if items.name != 'DELETE' %}
-                                            {% bootstrap_field items %}
+                                        {% if component.name != 'DELETE' %}
+                                            {% bootstrap_field component %}
                                         {% endif %}
                                     </td>
                                 {% endfor %}
@@ -48,7 +43,7 @@
 
 
                 </div>
-                {{ bill_details.management_form }}
+                {{ tax_components.management_form }}
                 <input type="submit" value="Save" class="btn btn-primary btn-large">
                 <a class="btn btn-default" href="{{ request.META.HTTP_REFERER }}"> Cancel</a>
             </div>

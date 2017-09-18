@@ -88,7 +88,7 @@
                     } else {
                         row.remove();
                         // Update the TOTAL_FORMS count:
-                        forms = $('.' + options.formCssClass).not('.formset-custom-template');
+                        forms = $('.' + options.formCssClass).not('.formset-custom-templates');
                         totalForms.val(forms.length);
                     }
                     for (var i=0, formCount=forms.length; i<formCount; i++) {
@@ -146,9 +146,9 @@
             var hideAddButton = !showAddButton(),
                 addButton, template;
             if (options.formTemplate) {
-                // If a form template was specified, we'll clone it to generate new form instances:
+                // If a form templates was specified, we'll clone it to generate new form instances:
                 template = (options.formTemplate instanceof $) ? options.formTemplate : $(options.formTemplate);
-                template.removeAttr('id').addClass(options.formCssClass + ' formset-custom-template');
+                template.removeAttr('id').addClass(options.formCssClass + ' formset-custom-templates');
                 template.find(childElementSelector).each(function() {
                     updateElementIndex($(this), options.prefix, '__prefix__');
                 });
@@ -190,7 +190,7 @@
             }
             addButton.click(function() {
                 var formCount = parseInt(totalForms.val()),
-                    row = options.formTemplate.clone(true).removeClass('formset-custom-template'),
+                    row = options.formTemplate.clone(true).removeClass('formset-custom-templates'),
                     buttonRow = $($(this).parents('tr.' + options.formCssClass + '-add').get(0) || this)
                     delCssSelector = options.deleteCssClass.trim().replace(/\s+/g, '.');
                 applyExtraClasses(row, formCount);

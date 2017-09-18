@@ -22,10 +22,9 @@
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/users_accounts/templates" />
         <option value="$MODULE_DIR$/organizations/Templates" />
-        <option value="$MODULE_DIR$/AccountTypes/Templates" />
         <option value="$MODULE_DIR$/chart_of_accounts/Templates" />
-        <option value="$MODULE_DIR$/AccountTypes/Templates/AccountTypes" />
         <option value="$MODULE_DIR$/transactions/templates" />
+        <option value="$MODULE_DIR$/tax/templates" />
       </list>
     </option>
   </component>

@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.mixins import(
     LoginRequiredMixin,
     PermissionRequiredMixin
@@ -5,7 +7,7 @@ from django.contrib.auth.mixins import(
 
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
-
+import calendar
 
 # Create your views here.
 from AccountingApp.models import TransactionSources
@@ -66,6 +68,7 @@ class TransactionsList(LoginRequiredMixin, generic.ListView):
 
 def create_new_transaction(org_id, source_key, source_record, validate_transaction=False):
     create_trans = False
+    create_tax_trans = False
     source = TransactionSources.objects.get(source_key=source_key)
     if source_key == 'BILL':
         # source_record = BillDetails.objects.get(id=source_record)
@@ -84,6 +87,15 @@ def create_new_transaction(org_id, source_key, source_record, validate_transacti
         created_by = source_record.created_by
         created_date = source_record.created_date
 
+        if source_record.bill.amounts_are_id != 3:
+            num_days = calendar.monthrange(transaction_date.year, transaction_date.month)[1]
+            tax_value_date = datetime.date(transaction_date.year, transaction_date.month, num_days)
+            tax_amount = source_record.tax_amount
+            tax_cr_account_code = source_record.tax.tax_account
+            tax_base_eqv_amount = tax_amount * exchange_rate
+
+            create_tax_trans = True
+
         create_trans = True
     elif source_key == 'INV':
         pass
@@ -94,23 +106,42 @@ def create_new_transaction(org_id, source_key, source_record, validate_transacti
 
     if create_trans:
         new_transaction = Transaction.objects.create(org_id=org_id,
-                                   transaction_id=get_new_transaction_id(org_id),
-                                   transaction_date=transaction_date,
-                                   value_date=value_date,
-                                   amount=amount,
-                                   dr_account_code=dr_account_code,
-                                   cr_account_code=cr_account_code,
-                                   currency_id=currency_id,
-                                   base_currency_id=base_currency_id,
-                                   exchange_rate=exchange_rate,
-                                   base_eqv_amount=base_eqv_amount,
-                                   narrative=narrative,
-                                   void=False,
-                                   transaction_source=transaction_source,
-                                   reference_number=reference_number,
-                                   created_by=created_by,
-                                   created_date=created_date
-                                   )
+                                                     transaction_id=get_new_transaction_id(org_id),
+                                                     transaction_date=transaction_date,
+                                                     value_date=value_date,
+                                                     amount=amount,
+                                                     dr_account_code=dr_account_code,
+                                                     cr_account_code=cr_account_code,
+                                                     currency_id=currency_id,
+                                                     base_currency_id=base_currency_id,
+                                                     exchange_rate=exchange_rate,
+                                                     base_eqv_amount=base_eqv_amount,
+                                                     narrative=narrative,
+                                                     void=False,
+                                                     transaction_source=transaction_source,
+                                                     reference_number=reference_number,
+                                                     created_by=created_by,
+                                                     created_date=created_date
+                                                    )
+        if create_tax_trans:
+            tax_transaction = Transaction.objects.create(org_id=org_id,
+                                                         transaction_id=get_new_transaction_id(org_id),
+                                                         transaction_date=transaction_date,
+                                                         value_date=tax_value_date,
+                                                         amount=tax_amount,
+                                                         dr_account_code=dr_account_code,
+                                                         cr_account_code=tax_cr_account_code,
+                                                         currency_id=currency_id,
+                                                         base_currency_id=base_currency_id,
+                                                         exchange_rate=exchange_rate,
+                                                         base_eqv_amount=tax_base_eqv_amount,
+                                                         narrative=narrative,
+                                                         void=False,
+                                                         transaction_source=transaction_source,
+                                                         reference_number=reference_number,
+                                                         created_by=created_by,
+                                                         created_date=created_date
+                                                         )
         if source_key == 'BILL':
             BillDetails.objects.filter(id=source_record.id).update(trnx_number=new_transaction)
         elif source_key == 'INV':

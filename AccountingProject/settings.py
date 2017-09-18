@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'organizations',
     'account_types',
     'chart_of_accounts',
+    'tax',
     'transactions',
     'vendor',
     'inventory',

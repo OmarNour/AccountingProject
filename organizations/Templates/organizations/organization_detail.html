@@ -55,6 +55,18 @@
 
 {% endblock %}
 
+{% block taxes %}
+    {% if organization.Tax_org_id.count == 0 %}
+        <h3>No Taxes Defiened!</h3>
+
+
+    {% else %}
+        {% include "organizations/_taxes.html" %}
+    {% endif %}
+    <a class="btn btn-success"href="{% url 'organizations:new-tax' org_id=organization.id %}"><span
+            class="glyphicon glyphicon-plus"></span></a>
+{% endblock %}
+
 {% block transactions_content %}
 
     {% if organization.Transactions_org_id.count == 0 %}
@@ -64,6 +76,10 @@
     {% endif %}
     <a class="btn btn-success"
        href="{% url 'organizations:new-transaction' org_id=organization.id %}"><span
-            class="glyphicon glyphicon-plus"></span> Create new</a>
+            class="glyphicon glyphicon-plus"></span> Manual</a>
+
+    <a class="btn btn-success"
+       href="{% url 'organizations:new-bill' org_id=organization.id %}"><span
+            class="glyphicon glyphicon-plus"></span> Bill</a>
 
 {% endblock %}

@@ -1,0 +1,34 @@
+<div class="org_accTypes">
+    <h3>Taxes</h3>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+{#            <th> ID</th>#}
+            <th> Desc.</th>
+            <th> Account</th>
+            <th> Percentage</th>
+            <th> # Components</th>
+            </thead>
+            {% for tax in organization.Tax_org_id.all %}
+                <tr>
+{#                    <td> {{ tax.tax_id }} </td>#}
+                    <td> {{ tax.tax_desc }} </td>
+                    <td> {{ tax.tax_account }} </td>
+                    <td> {{ tax.total_tax_pct }} </td>
+{#                    <td> {{ accountType.main_code.name }} </td>#}
+                    <td> {{ tax.TaxComponents_tax.count }} </td>
+                    <td>
+                        <a href="{% url 'organizations:detail-account-type' org_id=tax.org_id.id acc_typ_code=tax.tax_id pk=tax.id %}"
+                           title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+
+                    </td>
+
+
+                </tr>
+
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+

@@ -2,43 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b09ab7f-f37e-4ab5-bc8f-0831eb7921c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttype_detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0002_auto_20170911_2120.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/apps.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/migrations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/views.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bill/migrations/0002_billdetails_amount.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountingApp/migrations/0002_auto_20170917_1606.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AccountingApp/migrations/0003_auto_20170917_2022.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0003_billdetails_tax.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0004_auto_20170917_0005.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0005_billdetails_amounts_are.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0006_auto_20170917_1609.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0007_auto_20170917_1609.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0008_auto_20170917_2138.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bill/migrations/0009_auto_20170918_0205.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_taxes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/migrations/0001_initial.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/migrations/0002_tax_tax_desc.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/migrations/0003_auto_20170916_1106.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/migrations/0004_auto_20170916_1110.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/templates/tax/tax_base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tax/templates/tax/tax_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.accountingDB" afterPath="$PROJECT_DIR$/db.accountingDB" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AccountingProject.iml" afterPath="$PROJECT_DIR$/.idea/AccountingProject.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttypes_form.html" afterPath="$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttypes_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/account_types/views.py" afterPath="$PROJECT_DIR$/account_types/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/admin.py" afterPath="$PROJECT_DIR$/AccountingApp/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingApp/models.py" afterPath="$PROJECT_DIR$/AccountingApp/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AccountingProject/settings.py" afterPath="$PROJECT_DIR$/AccountingProject/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bill/forms.py" afterPath="$PROJECT_DIR$/bill/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bill/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/bill/migrations/0001_initial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bill/models.py" afterPath="$PROJECT_DIR$/bill/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bill/templates/bill/bill_form.html" afterPath="$PROJECT_DIR$/bill/templates/bill/bill_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bill/views.py" afterPath="$PROJECT_DIR$/bill/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_form.html" afterPath="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chart_of_accounts/views.py" afterPath="$PROJECT_DIR$/chart_of_accounts/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/_chart_of_accounts.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_chart_of_accounts.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/org_exchange_rate_form.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/org_exchange_rate_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/organization_confirm_delete.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_confirm_delete.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/organization_form.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/organization_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_confirm_delete.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_form.html" afterPath="$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_form.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/organizations/urls.py" afterPath="$PROJECT_DIR$/organizations/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/forms.py" afterPath="$PROJECT_DIR$/transactions/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/transactions/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/models.py" afterPath="$PROJECT_DIR$/transactions/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/templates/transactions/transaction_form.html" afterPath="$PROJECT_DIR$/transactions/templates/transactions/transaction_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/jquery.formset.js" afterPath="$PROJECT_DIR$/static/js/jquery.formset.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/vendor/jquery/jquery.js" afterPath="$PROJECT_DIR$/static/vendor/jquery/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tax/models.py" afterPath="$PROJECT_DIR$/tax/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tax/views.py" afterPath="$PROJECT_DIR$/tax/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transactions/views.py" afterPath="$PROJECT_DIR$/transactions/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users_accounts/templates/invitedusers_form.html" afterPath="$PROJECT_DIR$/users_accounts/templates/invitedusers_form.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,6 +82,7 @@
       <find>all</find>
       <find>BillDetailsFormSet</find>
       <find>null</find>
+      <find>tax_components</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,19 +91,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/transactions/templates/transactions/transaction_base.html" />
-        <option value="$PROJECT_DIR$/transactions/templates/transactions/transaction_list.html" />
-        <option value="$PROJECT_DIR$/users_accounts/urls.py" />
-        <option value="$PROJECT_DIR$/users_accounts/views.py" />
-        <option value="$PROJECT_DIR$/organizations/forms.py" />
-        <option value="$PROJECT_DIR$/users_accounts/forms.py" />
-        <option value="$PROJECT_DIR$/AccountTypes/migrations/0001_initial.py" />
-        <option value="$PROJECT_DIR$/AccountTypes/models.py" />
-        <option value="$PROJECT_DIR$/account_types/models.py" />
         <option value="$PROJECT_DIR$/account_types/migrations/0001_initial.py" />
         <option value="$PROJECT_DIR$/users_accounts/models.py" />
         <option value="$PROJECT_DIR$/organizations/models.py" />
-        <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html" />
         <option value="$PROJECT_DIR$/static/vendor/jquery/jquery.min.js" />
         <option value="$PROJECT_DIR$/static/vendor/jquery/jquery.js" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_list.html" />
@@ -117,22 +107,14 @@
         <option value="$PROJECT_DIR$/templates/AccountingApp/base.html" />
         <option value="$PROJECT_DIR$/vendor/admin.py" />
         <option value="$PROJECT_DIR$/bill/admin.py" />
-        <option value="$PROJECT_DIR$/AccountingProject/settings.py" />
         <option value="$PROJECT_DIR$/transactions/models.py" />
-        <option value="$PROJECT_DIR$/transactions/views.py" />
-        <option value="$PROJECT_DIR$/bill/models.py" />
-        <option value="$PROJECT_DIR$/bill/views.py" />
-        <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html" />
         <option value="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_list.html" />
-        <option value="$PROJECT_DIR$/organizations/urls.py" />
         <option value="$PROJECT_DIR$/account_types/views.py" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/_chart_of_accounts.html" />
         <option value="$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_form.html" />
         <option value="$PROJECT_DIR$/chart_of_accounts/views.py" />
-        <option value="$PROJECT_DIR$/bill/templates/bill/bill_form.html" />
         <option value="$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttypes_form.html" />
-        <option value="$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/org_exchange_rate_form.html" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_confirm_delete.html" />
         <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_form.html" />
@@ -141,7 +123,25 @@
         <option value="$PROJECT_DIR$/transactions/templates/transactions/transaction_form.html" />
         <option value="$PROJECT_DIR$/users_accounts/templates/invitedusers_form.html" />
         <option value="$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttype_detail.html" />
+        <option value="$PROJECT_DIR$/AccountingProject/settings.py" />
+        <option value="$PROJECT_DIR$/tax/templates/tax_form.html" />
+        <option value="$PROJECT_DIR$/tax/templates/tax/tax_base.html" />
+        <option value="$PROJECT_DIR$/organizations/urls.py" />
+        <option value="$PROJECT_DIR$/tax/templates/tax/tax_form.html" />
+        <option value="$PROJECT_DIR$/tax/forms.py" />
+        <option value="$PROJECT_DIR$/bill/templates/bill/bill_form.html" />
+        <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html" />
+        <option value="$PROJECT_DIR$/tax/views.py" />
+        <option value="$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html" />
+        <option value="$PROJECT_DIR$/organizations/Templates/organizations/_taxes.html" />
+        <option value="$PROJECT_DIR$/AccountingApp/admin.py" />
+        <option value="$PROJECT_DIR$/AccountingApp/models.py" />
         <option value="$PROJECT_DIR$/bill/forms.py" />
+        <option value="$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html" />
+        <option value="$PROJECT_DIR$/tax/models.py" />
+        <option value="$PROJECT_DIR$/bill/models.py" />
+        <option value="$PROJECT_DIR$/transactions/views.py" />
+        <option value="$PROJECT_DIR$/bill/views.py" />
       </list>
     </option>
   </component>
@@ -180,8 +180,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,10 +196,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django-dynamic-formset-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -211,18 +211,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\Python\AccountingProject\organizations\Templates\organizations" />
+      <recent name="D:\github\Python\AccountingProject\tax\templates\tax" />
       <recent name="D:\github\Python\AccountingProject\chart_of_accounts\Templates\chart_of_accounts" />
       <recent name="D:\github\Python\AccountingProject\static\css" />
       <recent name="D:\github\Python\AccountingProject\static" />
-      <recent name="D:\github\Python\AccountingProject\bill\templates\bill" />
-      <recent name="D:\github\Python\AccountingProject\users_accounts\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\github\Python\AccountingProject\tax\templates\tax" />
       <recent name="D:\github\Python\AccountingProject\transactions\templates\transactions" />
       <recent name="D:\github\Python\AccountingProject\transactions\templates" />
       <recent name="D:\github\Python\AccountingProject\users_accounts\middleware" />
       <recent name="D:\github\Python\AccountingProject\AccountTypes\Templates\AccountTypes" />
-      <recent name="D:\github\Python\AccountingProject\AccountTypes\Templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -493,8 +493,8 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3639399" sideWeight="0.48789713" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4006678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@AccountingProject" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2854758" sideWeight="0.85779124" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21255673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="manage.py@AccountingProject" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3155259" sideWeight="0.85779124" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2246596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -515,19 +515,19 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40901503" sideWeight="0.14220877" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6076795" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3639399" sideWeight="0.48789713" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4006678" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@AccountingProject" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4724541" sideWeight="0.85779124" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="manage.py@AccountingProject" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3155259" sideWeight="0.85779124" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2246596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32554257" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39732888" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -578,188 +578,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/template/defaultfilters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="966" column="0" lean-forward="false" selection-start-line="966" selection-start-column="0" selection-end-line="966" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/views/debug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/utils/deprecation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="863" column="0" lean-forward="false" selection-start-line="863" selection-start-column="0" selection-end-line="863" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/socketserver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="638" column="0" lean-forward="false" selection-start-line="638" selection-start-column="0" selection-end-line="638" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/core/servers/basehttp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/wsgiref/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/contrib/staticfiles/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/whitenoise/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/core/handlers/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="156" column="0" lean-forward="false" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/core/handlers/exception.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AccountingProject/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/transactions/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/transactions/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bill/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="89" column="93" lean-forward="false" selection-start-line="89" selection-start-column="93" selection-end-line="89" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chart_of_accounts/Templates/chart_of_accounts/chart_of_accounts_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-84">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/views/generic/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="46" column="8" lean-forward="false" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/account_types/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="47" column="6" lean-forward="false" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="27" column="61" lean-forward="true" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chart_of_accounts/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="29" column="76" lean-forward="true" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account_types/Templates/AccountTypes/AccountTypes_base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-252">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="24" column="150" lean-forward="true" selection-start-line="24" selection-start-column="150" selection-end-line="24" selection-end-column="150" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
           <caret line="21" column="25" lean-forward="true" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -775,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-126">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,7 +603,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-189">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,15 +610,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="18" column="58" lean-forward="true" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-606">
-          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -807,15 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="33" column="14" lean-forward="true" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bill/templates/bill/bill_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="66" column="80" lean-forward="false" selection-start-line="66" selection-start-column="80" selection-end-line="66" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -831,7 +631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,14 +638,546 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_confirm_delete.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="15" column="68" lean-forward="false" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transactions/templates/transactions/transaction_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users_accounts/templates/invitedusers_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="101" lean-forward="false" selection-start-line="15" selection-start-column="101" selection-end-line="15" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttype_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttypes_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AccountingApp/upload_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccountingApp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="219" column="16" lean-forward="false" selection-start-line="219" selection-start-column="16" selection-end-line="219" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccountingApp/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/AccountingApp/transactions_all.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="42" column="70" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="42" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tax/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccountingProject/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="29" column="1" lean-forward="true" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chart_of_accounts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tax/templates/tax/tax_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transactions/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="68" column="79" lean-forward="true" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="107" column="40" lean-forward="true" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1527">
+          <caret line="56" column="24" lean-forward="true" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AccountingProjectEnv/Lib/site-packages/django/forms/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-379">
+          <caret line="312" column="33" lean-forward="false" selection-start-line="312" selection-start-column="33" selection-end-line="312" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AccountingProject/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="48" column="10" lean-forward="false" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html">
+    <entry file="file://$PROJECT_DIR$/bill/templates/bill/bill_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="52" column="42" lean-forward="false" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+        <state relative-caret-position="1">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tax/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="47" column="15" lean-forward="true" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account_types/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="38" column="37" lean-forward="true" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DjangoModelDependency/#AccountingProject">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DjangoModelDependency</ID>
+          <OriginalElement>#AccountingProject</OriginalElement>
+          <nodes>
+            <node x="397.11829268292604" y="375.701171875">tax.models.Tax</node>
+            <node x="0.0" y="255.701171875">organizations.models.OrganizationMember</node>
+            <node x="570.305792682926" y="5.701171875">organizations.models.Organization</node>
+            <node x="736.4489837398368" y="155.701171875">account_types.models.AccountType</node>
+            <node x="1424.0114837398369" y="375.701171875">organizations.models.OrgExchangeRate</node>
+            <node x="318.25" y="255.701171875">purchase_order.models.PurchaseOrder</node>
+            <node x="2316.35325203252" y="255.701171875">AccountingApp.models.Transactions</node>
+            <node x="109.11829268292604" y="375.701171875">purchase_order.models.PurchaseOrderDetail</node>
+            <node x="47.0" y="610.701171875">django.contrib.auth.models.Permission</node>
+            <node x="1532.2614837398369" y="255.701171875">AccountingApp.models.ExchangeRate</node>
+            <node x="788.9999999999999" y="455.701171875">bill.models.BillDetails</node>
+            <node x="2225.9365853658533" y="5.701171875">AccountingApp.models.AccountTypes</node>
+            <node x="0.0" y="690.701171875">django.contrib.auth.models.Group</node>
+            <node x="19.0" y="530.701171875">django.contrib.contenttypes.models.ContentType</node>
+            <node x="1285.2614837398369" y="255.701171875">organizations.models.OrgCurrencies</node>
+            <node x="672.8740853658533" y="255.701171875">chart_of_accounts.models.ChartOfAccount</node>
+            <node x="999.2614837398368" y="255.701171875">AccountingApp.models.TransactionSources</node>
+            <node x="1568.1364837398369" y="155.701171875">AccountingApp.models.Currencies</node>
+            <node x="77.0" y="770.701171875">users_accounts.models.User</node>
+            <node x="2297.60325203252" y="155.701171875">AccountingApp.models.ChartOfAccounts</node>
+            <node x="939.8115853658533" y="375.701171875">transactions.models.Transaction</node>
+            <node x="1960.9365853658533" y="155.701171875">AccountingApp.models.AccountTypesDrCr</node>
+            <node x="334.61829268292604" y="455.701171875">tax.models.TaxComponents</node>
+            <node x="891.8740853658533" y="5.701171875">AccountingApp.models.Sign</node>
+            <node x="1788.2614837398369" y="255.701171875">inventory.models.Inventory</node>
+            <node x="569.8067073170728" y="375.701171875">bill.models.Bill</node>
+            <node x="477.87408536585326" y="155.701171875">vendor.models.Vendor</node>
+            <node x="83.25" y="155.701171875">organizations.models.InvitedUsers</node>
+            <node x="362.0" y="530.701171875">AccountingApp.models.ContactUs</node>
+            <node x="1998.9365853658533" y="5.701171875">AccountingApp.models.DrCr</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="AccountingApp.models.Transactions" target="AccountingApp.models.Currencies">
+              <point x="-57.5" y="-15.0" />
+              <point x="2373.85325203252" y="225.701171875" />
+              <point x="1759.7614837398369" y="225.701171875" />
+              <point x="82.125" y="15.0" />
+            </edge>
+            <edge source="inventory.models.Inventory" target="organizations.models.Organization">
+              <point x="44.75" y="-15.0" />
+              <point x="1922.5114837398369" y="85.701171875" />
+              <point x="779.2224593495928" y="85.701171875" />
+              <point x="99.91666666666674" y="15.0" />
+            </edge>
+            <edge source="bill.models.BillDetails" target="inventory.models.Inventory">
+              <point x="58.39999999999998" y="-15.0" />
+              <point x="920.3999999999999" y="435.701171875" />
+              <point x="1877.7614837398369" y="435.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="vendor.models.Vendor" target="organizations.models.Organization">
+              <point x="0.0" y="-15.0" />
+              <point x="554.8740853658533" y="125.701171875" />
+              <point x="652.055792682926" y="125.701171875" />
+              <point x="-27.25" y="15.0" />
+            </edge>
+            <edge source="bill.models.BillDetails" target="chart_of_accounts.models.ChartOfAccount">
+              <point x="0.0" y="-15.0" />
+              <point x="861.9999999999999" y="435.701171875" />
+              <point x="860.055792682926" y="435.701171875" />
+              <point x="860.055792682926" y="335.701171875" />
+              <point x="836.6240853658533" y="335.701171875" />
+              <point x="32.75" y="15.0" />
+            </edge>
+            <edge source="tax.models.Tax" target="organizations.models.Organization">
+              <point x="-28.0" y="-15.0" />
+              <point x="425.11829268292604" y="345.701171875" />
+              <point x="307.75" y="345.701171875" />
+              <point x="307.75" y="105.701171875" />
+              <point x="615.7224593495926" y="105.701171875" />
+              <point x="-63.58333333333337" y="15.0" />
+            </edge>
+            <edge source="users_accounts.models.User" target="django.contrib.auth.models.Permission">
+              <point x="45.5" y="-15.0" />
+              <point x="213.5" y="745.701171875" />
+              <point x="227.5" y="745.701171875" />
+              <point x="60.5" y="15.0" />
+            </edge>
+            <edge source="account_types.models.AccountType" target="AccountingApp.models.Sign">
+              <point x="56.5" y="-15.0" />
+              <point x="905.9489837398368" y="135.701171875" />
+              <point x="938.3740853658533" y="135.701171875" />
+              <point x="-46.5" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.ExchangeRate" target="AccountingApp.models.Currencies">
+              <point x="0.0" y="-15.0" />
+              <point x="-27.375" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.ChartOfAccounts" target="AccountingApp.models.ChartOfAccounts">
+              <point x="-63.75" y="15.0" />
+              <point x="2361.35325203252" y="205.701171875" />
+              <point x="2277.60325203252" y="205.701171875" />
+              <point x="2277.60325203252" y="170.701171875" />
+              <point x="-127.5" y="-0.0" />
+            </edge>
+            <edge source="chart_of_accounts.models.ChartOfAccount" target="account_types.models.AccountType">
+              <point x="65.5" y="-15.0" />
+              <point x="869.3740853658533" y="235.701171875" />
+              <point x="905.9489837398368" y="235.701171875" />
+              <point x="56.5" y="15.0" />
+            </edge>
+            <edge source="transactions.models.Transaction" target="organizations.models.Organization">
+              <point x="-25.625" y="-15.0" />
+              <point x="1016.6865853658533" y="335.701171875" />
+              <point x="988.7614837398368" y="335.701171875" />
+              <point x="988.7614837398368" y="115.701171875" />
+              <point x="724.7224593495928" y="115.701171875" />
+              <point x="45.41666666666674" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.Transactions" target="AccountingApp.models.ChartOfAccounts">
+              <point x="57.5" y="-15.0" />
+              <point x="63.75" y="15.0" />
+            </edge>
+            <edge source="purchase_order.models.PurchaseOrder" target="vendor.models.Vendor">
+              <point x="59.5" y="-15.0" />
+              <point x="496.75" y="235.701171875" />
+              <point x="516.3740853658533" y="235.701171875" />
+              <point x="-38.5" y="15.0" />
+            </edge>
+            <edge source="bill.models.Bill" target="organizations.models.OrgCurrencies">
+              <point x="41.625" y="-15.0" />
+              <point x="666.9317073170728" y="345.701171875" />
+              <point x="1322.9281504065036" y="345.701171875" />
+              <point x="-75.33333333333326" y="15.0" />
+            </edge>
+            <edge source="organizations.models.InvitedUsers" target="organizations.models.Organization">
+              <point x="0.0" y="-15.0" />
+              <point x="190.25" y="95.701171875" />
+              <point x="597.555792682926" y="95.701171875" />
+              <point x="-81.75" y="15.0" />
+            </edge>
+            <edge source="purchase_order.models.PurchaseOrder" target="organizations.models.Organization">
+              <point x="-59.5" y="-15.0" />
+              <point x="377.75" y="115.701171875" />
+              <point x="633.8891260162593" y="115.701171875" />
+              <point x="-45.41666666666663" y="15.0" />
+            </edge>
+            <edge source="transactions.models.Transaction" target="chart_of_accounts.models.ChartOfAccount">
+              <point x="-76.875" y="-15.0" />
+              <point x="965.4365853658533" y="335.701171875" />
+              <point x="902.1240853658533" y="335.701171875" />
+              <point x="98.25" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrgExchangeRate" target="organizations.models.Organization">
+              <point x="0.0" y="-15.0" />
+              <point x="1545.5114837398369" y="355.701171875" />
+              <point x="1521.7614837398369" y="355.701171875" />
+              <point x="1521.7614837398369" y="95.701171875" />
+              <point x="761.055792682926" y="95.701171875" />
+              <point x="81.75" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.ChartOfAccounts" target="AccountingApp.models.AccountTypes">
+              <point x="0.0" y="-15.0" />
+              <point x="79.66666666666652" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.AccountTypesDrCr" target="AccountingApp.models.Sign">
+              <point x="-87.66666666666674" y="-15.0" />
+              <point x="2004.7699186991865" y="75.701171875" />
+              <point x="1031.3740853658533" y="75.701171875" />
+              <point x="46.5" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrgExchangeRate" target="AccountingApp.models.ExchangeRate">
+              <point x="81.0" y="-15.0" />
+              <point x="1626.5114837398369" y="355.701171875" />
+              <point x="1650.2614837398369" y="355.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="users_accounts.models.User" target="django.contrib.auth.models.Group">
+              <point x="-45.5" y="-15.0" />
+              <point x="122.5" y="745.701171875" />
+              <point x="108.5" y="745.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.AccountTypes" target="AccountingApp.models.AccountTypes">
+              <point x="-79.66666666666674" y="15.0" />
+              <point x="2265.7699186991867" y="55.701171875" />
+              <point x="2205.9365853658533" y="55.701171875" />
+              <point x="2205.9365853658533" y="20.701171875" />
+              <point x="-119.5" y="-0.0" />
+            </edge>
+            <edge source="django.contrib.auth.models.Group" target="django.contrib.auth.models.Permission">
+              <point x="0.0" y="-15.0" />
+              <point x="-60.5" y="15.0" />
+            </edge>
+            <edge source="bill.models.BillDetails" target="bill.models.Bill">
+              <point x="-29.200000000000045" y="-15.0" />
+              <point x="832.7999999999998" y="425.701171875" />
+              <point x="625.3067073170728" y="425.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="chart_of_accounts.models.ChartOfAccount" target="organizations.models.Organization">
+              <point x="-65.5" y="-15.0" />
+              <point x="738.3740853658533" y="235.701171875" />
+              <point x="705.9489837398368" y="235.701171875" />
+              <point x="705.9489837398368" y="135.701171875" />
+              <point x="688.3891260162593" y="135.701171875" />
+              <point x="9.083333333333371" y="15.0" />
+            </edge>
+            <edge source="bill.models.Bill" target="purchase_order.models.PurchaseOrder">
+              <point x="-41.625" y="-15.0" />
+              <point x="583.6817073170728" y="325.701171875" />
+              <point x="496.75" y="325.701171875" />
+              <point x="59.5" y="15.0" />
+            </edge>
+            <edge source="django.contrib.auth.models.Permission" target="django.contrib.contenttypes.models.ContentType">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="purchase_order.models.PurchaseOrderDetail" target="purchase_order.models.PurchaseOrder">
+              <point x="0.0" y="-15.0" />
+              <point x="243.11829268292604" y="355.701171875" />
+              <point x="377.75" y="355.701171875" />
+              <point x="-59.5" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrganizationMember" target="organizations.models.InvitedUsers">
+              <point x="65.75" y="-15.0" />
+              <point x="197.25" y="235.701171875" />
+              <point x="190.25" y="235.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="account_types.models.AccountType" target="account_types.models.AccountType">
+              <point x="-56.5" y="15.0" />
+              <point x="792.9489837398368" y="205.701171875" />
+              <point x="716.4489837398368" y="205.701171875" />
+              <point x="716.4489837398368" y="170.701171875" />
+              <point x="-113.0" y="-0.0" />
+            </edge>
+            <edge source="tax.models.TaxComponents" target="tax.models.Tax">
+              <point x="0.0" y="-15.0" />
+              <point x="-28.0" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.AccountTypesDrCr" target="AccountingApp.models.DrCr">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="transactions.models.Transaction" target="AccountingApp.models.TransactionSources">
+              <point x="25.625" y="-15.0" />
+              <point x="1067.9365853658533" y="335.701171875" />
+              <point x="1132.2614837398369" y="335.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrgExchangeRate" target="organizations.models.OrgCurrencies">
+              <point x="-81.0" y="-15.0" />
+              <point x="1464.5114837398369" y="355.701171875" />
+              <point x="1473.5948170731701" y="355.701171875" />
+              <point x="75.33333333333326" y="15.0" />
+            </edge>
+            <edge source="tax.models.Tax" target="chart_of_accounts.models.ChartOfAccount">
+              <point x="28.0" y="-15.0" />
+              <point x="481.11829268292604" y="335.701171875" />
+              <point x="771.1240853658533" y="335.701171875" />
+              <point x="-32.75" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrgCurrencies" target="AccountingApp.models.Currencies">
+              <point x="56.5" y="-15.0" />
+              <point x="1454.7614837398369" y="235.701171875" />
+              <point x="1595.5114837398369" y="235.701171875" />
+              <point x="-82.125" y="15.0" />
+            </edge>
+            <edge source="bill.models.Bill" target="organizations.models.Organization">
+              <point x="13.875" y="-15.0" />
+              <point x="639.1817073170728" y="325.701171875" />
+              <point x="642.3740853658533" y="325.701171875" />
+              <point x="642.3740853658533" y="135.701171875" />
+              <point x="670.2224593495928" y="135.701171875" />
+              <point x="-9.083333333333258" y="15.0" />
+            </edge>
+            <edge source="chart_of_accounts.models.ChartOfAccount" target="chart_of_accounts.models.ChartOfAccount">
+              <point x="-98.25" y="15.0" />
+              <point x="705.6240853658533" y="305.701171875" />
+              <point x="652.8740853658533" y="305.701171875" />
+              <point x="652.8740853658533" y="270.701171875" />
+              <point x="-131.0" y="-0.0" />
+            </edge>
+            <edge source="bill.models.Bill" target="vendor.models.Vendor">
+              <point x="-13.875" y="-15.0" />
+              <point x="611.4317073170728" y="325.701171875" />
+              <point x="593.3740853658533" y="325.701171875" />
+              <point x="38.5" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrgCurrencies" target="organizations.models.Organization">
+              <point x="-56.5" y="-15.0" />
+              <point x="1341.7614837398369" y="105.701171875" />
+              <point x="742.8891260162593" y="105.701171875" />
+              <point x="63.58333333333337" y="15.0" />
+            </edge>
+            <edge source="inventory.models.Inventory" target="AccountingApp.models.Currencies">
+              <point x="-44.75" y="-15.0" />
+              <point x="1833.0114837398369" y="235.701171875" />
+              <point x="1705.0114837398369" y="235.701171875" />
+              <point x="27.375" y="15.0" />
+            </edge>
+            <edge source="transactions.models.Transaction" target="organizations.models.OrgCurrencies">
+              <point x="76.875" y="-15.0" />
+              <point x="1119.1865853658533" y="355.701171875" />
+              <point x="1398.2614837398369" y="355.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="account_types.models.AccountType" target="organizations.models.Organization">
+              <point x="-56.5" y="-15.0" />
+              <point x="792.9489837398368" y="125.701171875" />
+              <point x="706.555792682926" y="125.701171875" />
+              <point x="27.25" y="15.0" />
+            </edge>
+            <edge source="organizations.models.OrganizationMember" target="organizations.models.Organization">
+              <point x="-65.75" y="-15.0" />
+              <point x="65.75" y="235.701171875" />
+              <point x="72.75" y="235.701171875" />
+              <point x="72.75" y="85.701171875" />
+              <point x="579.3891260162593" y="85.701171875" />
+              <point x="-99.91666666666663" y="15.0" />
+            </edge>
+            <edge source="bill.models.BillDetails" target="transactions.models.Transaction">
+              <point x="29.200000000000045" y="-15.0" />
+              <point x="891.1999999999999" y="425.701171875" />
+              <point x="1042.3115853658533" y="425.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="bill.models.BillDetails" target="tax.models.Tax">
+              <point x="-58.39999999999998" y="-15.0" />
+              <point x="803.5999999999999" y="435.701171875" />
+              <point x="481.11829268292604" y="435.701171875" />
+              <point x="28.0" y="15.0" />
+            </edge>
+            <edge source="AccountingApp.models.AccountTypesDrCr" target="AccountingApp.models.AccountTypes">
+              <point x="87.66666666666652" y="-15.0" />
+              <point x="2180.10325203252" y="135.701171875" />
+              <point x="2345.4365853658533" y="135.701171875" />
+              <point x="0.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.39992226972405753" x="1643.0" y="401.0" />
+          <SelectedNodes>
+            <node>AccountingApp.models.DrCr</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/organization_base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="41" column="38" lean-forward="false" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_accountTypes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/account_types/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="49" column="58" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="49" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tax/templates/tax/tax_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="45" column="25" lean-forward="true" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -859,136 +1190,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_confirm_delete.html">
+    <entry file="file://$PROJECT_DIR$/organizations/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="68" lean-forward="false" selection-start-line="7" selection-start-column="68" selection-end-line="7" selection-end-column="68" />
+        <state relative-caret-position="240">
+          <caret line="51" column="74" lean-forward="false" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/orgcurrencies_form.html">
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/organization_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="68" lean-forward="false" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
+        <state relative-caret-position="219">
+          <caret line="63" column="38" lean-forward="false" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/transactions/templates/transactions/transaction_form.html">
+    <entry file="file://$PROJECT_DIR$/AccountingApp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
+        <state relative-caret-position="63">
+          <caret line="3" column="70" lean-forward="false" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users_accounts/templates/invitedusers_form.html">
+    <entry file="file://$PROJECT_DIR$/AccountingApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="101" lean-forward="false" selection-start-line="15" selection-start-column="101" selection-end-line="15" selection-end-column="101" />
+        <state relative-caret-position="105">
+          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttype_detail.html">
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_taxes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="114">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/account_types/Templates/AccountTypes/accounttypes_form.html">
+    <entry file="file://$PROJECT_DIR$/tax/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="217">
+          <caret line="81" column="33" lean-forward="true" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bill/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="75" column="98" lean-forward="false" selection-start-line="75" selection-start-column="98" selection-end-line="75" selection-end-column="98" />
+        <state relative-caret-position="200">
+          <caret line="111" column="4" lean-forward="false" selection-start-line="111" selection-start-column="5" selection-end-line="115" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chart_of_accounts/models.py">
+    <entry file="file://$PROJECT_DIR$/transactions/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="252">
+          <caret line="27" column="16" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AccountingApp/upload_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AccountingApp/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="219" column="16" lean-forward="false" selection-start-line="219" selection-start-column="16" selection-end-line="219" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-            <element signature="e#829#1626#0" expanded="false" />
-            <element signature="e#1677#1866#0" expanded="false" />
-            <element signature="e#1930#2116#0" expanded="false" />
-            <element signature="e#2144#2205#0" expanded="false" />
-            <element signature="e#2270#2831#0" expanded="false" />
-            <element signature="e#2886#3100#0" expanded="false" />
-            <element signature="e#3159#3764#0" expanded="false" />
-            <element signature="e#3790#3839#0" expanded="false" />
-            <element signature="e#3885#3938#0" expanded="false" />
-            <element signature="e#3969#4397#0" expanded="false" />
-            <element signature="e#4450#4969#0" expanded="false" />
-            <element signature="e#5027#5090#0" expanded="false" />
-            <element signature="e#5122#5183#0" expanded="false" />
-            <element signature="e#5250#5719#0" expanded="false" />
-            <element signature="e#5773#5965#0" expanded="false" />
-            <element signature="e#6040#6243#0" expanded="false" />
-            <element signature="e#6319#6893#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AccountingApp/urls.py">
+    <entry file="file://$PROJECT_DIR$/organizations/Templates/organizations/_transactions.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/AccountingApp/transactions_all.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="42" column="70" lean-forward="true" selection-start-line="41" selection-start-column="8" selection-end-line="42" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bill/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="45" column="70" lean-forward="false" selection-start-line="45" selection-start-column="70" selection-end-line="45" selection-end-column="70" />
+          <caret line="36" column="53" lean-forward="false" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tax/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
+        <state relative-caret-position="147">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bill/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bill/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transactions/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-166">
+          <caret line="92" column="16" lean-forward="false" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

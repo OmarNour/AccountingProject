@@ -1,9 +1,11 @@
 from django.conf.urls import url
+
+from tax.views import TaxView
 from . import views
 from account_types import views as account_types_views
 from chart_of_accounts import views as chart_of_accounts_views
 from transactions import views as trans_views
-from bill.views import BillView
+from bill.views import BillView, Bills
 
 app_name = 'organizations'
 
@@ -46,8 +48,12 @@ urlpatterns = [
     # Invite Users
     url(r'^(?i)invite-user/(?P<org_id>\w+)$', views.InviteUserView.as_view(), name='invite-user'),
 
+    # handling Taxes
+    url(r'^(?i)new-tax/(?P<org_id>\w+)$', TaxView.as_view(), name='new-tax'),
+
     # handling Bills
     url(r'^(?i)new-bill/(?P<org_id>\w+)$', BillView.as_view(), name='new-bill'),
-    url(r'^(?i)bills/(?P<org_id>\w+)$', trans_views.TransactionsList.as_view(), name='bills'),
+    url(r'^(?i)bills/(?P<org_id>\w+)$', Bills.as_view(), name='bills'),
+
 
 ]

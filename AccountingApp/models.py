@@ -2,6 +2,18 @@ from django.db import models
 from django.utils import timezone
 
 
+class LOV(models.Model):
+    domain = models.CharField(max_length=50)
+    l_value = models.CharField(max_length=50)
+    a_value = models.CharField(max_length=50)
+
+    class Meta:
+        unique_together = ('domain', 'l_value')
+
+    def __str__(self):
+        return self.l_value
+
+
 class Sign(models.Model):
     sign = models.CharField(max_length=1, primary_key=True)
 
