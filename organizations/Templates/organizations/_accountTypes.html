@@ -1,4 +1,5 @@
 <div class="org_accTypes">
+
     <h3>Chart of accounts</h3>
     <div class="table-responsive">
         <table class="table table-hover">
@@ -19,11 +20,11 @@
 {#                    <td> {{ accountType.main_code.name }} </td>#}
                     <td> {{ accountType.ChartOfAccounts_type_code.count }} </td>
                     <td>
-                        <a href="{% url 'organizations:create-account' org_id=accountType.org_id.id acc_typ_code_id=accountType.code %}"
-                           title="Create New Account"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{% url 'organizations:create-account' org_id=accountType.org_id.id acc_typ_code_id=accountType.id %}"
+                           title="Add Account"><span class="glyphicon glyphicon-plus"></span></a>
 
                         <a href="{% url 'organizations:detail-account-type' org_id=accountType.org_id.id acc_typ_code=accountType.code pk=accountType.id %}"
-                           title="Create New Account"><span class="glyphicon glyphicon-pencil"></span></a>
+                           title="Edit Account"><span class="glyphicon glyphicon-pencil"></span></a>
 
                     </td>
 

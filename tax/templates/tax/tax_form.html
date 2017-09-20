@@ -23,6 +23,7 @@
                         <th> Description</th>
                         <th> Percentage %</th>
                         <th> Compound</th>
+
                         </thead>
 
 
@@ -32,6 +33,10 @@
                                     <td>
                                         {% if component.name != 'DELETE' %}
                                             {% bootstrap_field component %}
+                                        {% else %}
+                                            {% if object.id %}
+                                                {% bootstrap_field component %}
+                                            {% endif %}
                                         {% endif %}
                                     </td>
                                 {% endfor %}

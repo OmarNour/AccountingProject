@@ -38,7 +38,7 @@ class CreateTransactionView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
-        # form.save(commit=True)
+
         organization = Organization.objects.filter(id=self.kwargs.get("org_id")).get()
         transaction_source = TransactionSources.objects.filter(source_key='MAN').get()
 
@@ -49,6 +49,12 @@ class CreateTransactionView(LoginRequiredMixin, generic.CreateView):
                                                         from_currency_id=form.instance.currency_id,
                                                         to_currency_id=form.instance.base_currency_id)
         form.instance.base_eqv_amount = form.instance.amount*form.instance.exchange_rate
+
+        self.object = form.save(commit=True)
+        create_new_transaction(org_id=form.instance.org_id,
+                               source_key='MAN',
+                               source_record=self.object)
+
         return super(CreateTransactionView, self).form_valid(form)
 
 
@@ -93,6 +99,7 @@ def create_new_transaction(org_id, source_key, source_record, validate_transacti
             tax_amount = source_record.tax_amount
             tax_cr_account_code = source_record.tax.tax_account
             tax_base_eqv_amount = tax_amount * exchange_rate
+            amount_is = source_record.bill.amounts_are
 
             create_tax_trans = True
 
@@ -101,6 +108,41 @@ def create_new_transaction(org_id, source_key, source_record, validate_transacti
         pass
     elif source_key == 'ECLM':
         pass
+    elif source_key == 'MAN':
+        # create tax transaction only
+        if source_record.amount_is_id != 3:
+            transaction_date = source_record.transaction_date
+            value_date = source_record.value_date
+            amount = source_record.amount
+            dr_account_code = source_record.dr_account_code
+            cr_account_code = source_record.cr_account_code
+            currency_id = source_record.currency_id
+            base_currency_id = source_record.base_currency_id
+            exchange_rate = source_record.exchange_rate
+            base_eqv_amount = source_record.base_eqv_amount
+            narrative = source_record.narrative
+            transaction_source = source_record.transaction_source
+            reference_number = source_record.id
+            created_by = source_record.created_by
+            created_date = source_record.created_date
+
+            num_days = calendar.monthrange(transaction_date.year, transaction_date.month)[1]
+            tax_value_date = datetime.date(transaction_date.year, transaction_date.month, num_days)
+            # tax_amount = source_record.tax_amount
+            if source_record.amount_is_id == 1:
+                # Tax Exclusive
+                tax_amount = amount * (source_record.tax.total_tax_pct / 100)
+            elif source_record.amount_is_id == 2:
+                # Tax Inclusive
+                tax_amount = (amount * source_record.tax.total_tax_pct) / (100 + source_record.tax.total_tax_pct)
+            else:
+                # Tax Exempted
+                tax_amount = 0
+            tax_cr_account_code = source_record.tax.tax_account
+            tax_base_eqv_amount = tax_amount * source_record.exchange_rate
+            amount_is = source_record.amount_is
+
+            create_tax_trans = True
     else:
         create_trans = False
 
@@ -117,37 +159,40 @@ def create_new_transaction(org_id, source_key, source_record, validate_transacti
                                                      exchange_rate=exchange_rate,
                                                      base_eqv_amount=base_eqv_amount,
                                                      narrative=narrative,
+                                                     amount_is=amount_is,
                                                      void=False,
                                                      transaction_source=transaction_source,
                                                      reference_number=reference_number,
                                                      created_by=created_by,
                                                      created_date=created_date
                                                     )
-        if create_tax_trans:
-            tax_transaction = Transaction.objects.create(org_id=org_id,
-                                                         transaction_id=get_new_transaction_id(org_id),
-                                                         transaction_date=transaction_date,
-                                                         value_date=tax_value_date,
-                                                         amount=tax_amount,
-                                                         dr_account_code=dr_account_code,
-                                                         cr_account_code=tax_cr_account_code,
-                                                         currency_id=currency_id,
-                                                         base_currency_id=base_currency_id,
-                                                         exchange_rate=exchange_rate,
-                                                         base_eqv_amount=tax_base_eqv_amount,
-                                                         narrative=narrative,
-                                                         void=False,
-                                                         transaction_source=transaction_source,
-                                                         reference_number=reference_number,
-                                                         created_by=created_by,
-                                                         created_date=created_date
-                                                         )
         if source_key == 'BILL':
             BillDetails.objects.filter(id=source_record.id).update(trnx_number=new_transaction)
         elif source_key == 'INV':
             pass
         elif source_key == 'ECLM':
             pass
+
+    if create_tax_trans:
+        tax_transaction = Transaction.objects.create(org_id=org_id,
+                                                     transaction_id=get_new_transaction_id(org_id),
+                                                     transaction_date=transaction_date,
+                                                     value_date=tax_value_date,
+                                                     amount=tax_amount,
+                                                     dr_account_code=dr_account_code,
+                                                     cr_account_code=tax_cr_account_code,
+                                                     currency_id=currency_id,
+                                                     base_currency_id=base_currency_id,
+                                                     exchange_rate=exchange_rate,
+                                                     base_eqv_amount=tax_base_eqv_amount,
+                                                     narrative=narrative,
+                                                     amount_is=amount_is,
+                                                     void=False,
+                                                     transaction_source=transaction_source,
+                                                     reference_number=reference_number,
+                                                     created_by=created_by,
+                                                     created_date=created_date
+                                                     )
 
 
 def get_base_currency(org_id):

@@ -18,7 +18,7 @@
 {#                    <td> {{ accountType.main_code.name }} </td>#}
                     <td> {{ tax.TaxComponents_tax.count }} </td>
                     <td>
-                        <a href="{% url 'organizations:detail-account-type' org_id=tax.org_id.id acc_typ_code=tax.tax_id pk=tax.id %}"
+                        <a href="{% url 'organizations:edit-tax' org_id=tax.org_id.id pk=tax.id %}"
                            title="Edit"><span class="glyphicon glyphicon-pencil"></span></a>
 
                     </td>

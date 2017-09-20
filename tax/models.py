@@ -39,7 +39,7 @@ class TaxComponents(models.Model):
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     modified_by = models.ForeignKey(User, null=True, blank=True, related_name='TaxComponents_modified_by')
-    updated_date = models.DateTimeField(null=True, blank=True, editable=False)
+    updated_date = models.DateTimeField(null=True, blank=True, editable=True)
 
     class Meta:
         unique_together = ('tax_id', 'id')

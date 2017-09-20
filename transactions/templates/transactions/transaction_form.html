@@ -11,7 +11,7 @@
         <input type="submit" value="Update" class="btn btn-primary btn-large">
         <a class="btn btn-danger" href="{#% url 'organizations:void-transaction' %#}"> Void </a>
     {% else %}
-        <input type="submit" value="Add" class="btn btn-primary btn-large">
+        <input type="submit" value="Post" class="btn btn-primary btn-large">
     {% endif %}
 
     <a class="btn btn-default" href="{{ request.META.HTTP_REFERER }}"> Cancel</a>

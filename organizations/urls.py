@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from tax.views import TaxView
+from tax.views import TaxCreateView, TaxUpdateView
 from . import views
 from account_types import views as account_types_views
 from chart_of_accounts import views as chart_of_accounts_views
@@ -25,7 +25,7 @@ urlpatterns = [
     url(r'^(?i)new-account-type/(?P<org_id>\w+)$',
         account_types_views.CreateAccountType.as_view(),
         name='create-account-type'),
-    url(r'^(?i)delete-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)$', account_types_views.DeleteAccountType.as_view(), name='delete-account-type'),
+    # url(r'^(?i)delete-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)$', account_types_views.DeleteAccountType.as_view(), name='delete-account-type'),
     url(r'^(?i)edit-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)-(?P<pk>\w+)$', account_types_views.AccountTypeUpdateView.as_view(), name='edit-account-type'),
     url(r'^(?i)detail-account-type/(?P<org_id>\w+)-(?P<acc_typ_code>\w+)-(?P<pk>\w+)$', account_types_views.AccountTypeDetailView.as_view(), name='detail-account-type'),
 
@@ -49,7 +49,8 @@ urlpatterns = [
     url(r'^(?i)invite-user/(?P<org_id>\w+)$', views.InviteUserView.as_view(), name='invite-user'),
 
     # handling Taxes
-    url(r'^(?i)new-tax/(?P<org_id>\w+)$', TaxView.as_view(), name='new-tax'),
+    url(r'^(?i)new-tax/(?P<org_id>\w+)$', TaxCreateView.as_view(), name='new-tax'),
+    url(r'^(?i)edit-tax/(?P<org_id>\w+)-(?P<pk>\w+)$', TaxUpdateView.as_view(), name='edit-tax'),
 
     # handling Bills
     url(r'^(?i)new-bill/(?P<org_id>\w+)$', BillView.as_view(), name='new-bill'),
