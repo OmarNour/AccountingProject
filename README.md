@@ -1,5 +1,6 @@
 # AccountingProject
   o	Features/functionality:
+	
     	Multi Organizations
     	Multi Currencies
     	Exchange rates
