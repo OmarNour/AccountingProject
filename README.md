@@ -1,4 +1,6 @@
 # AccountingProject
+	ERD: https://www.lucidchart.com/invitations/accept/23f80ee4-2866-4947-95ca-11a809903f3e
+	
 	o Features/functionality:	
 	    	Multi Organizations
 	    	Multi Currencies
