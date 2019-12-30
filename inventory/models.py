@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Inventory(models.Model):
-    org_id = models.ForeignKey(Organization, related_name='Inventory_org_id')
+    org_id = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='Inventory_org_id')
     item_id = models.CharField(max_length=10, null=False, blank=False)
     qty = models.IntegerField(null=False,blank=False)
     ordered_qty = models.IntegerField(null=False, blank=False, default=0)
@@ -15,15 +15,15 @@ class Inventory(models.Model):
     canceled_qty = models.IntegerField(null=False, blank=False, default=0)
     
     avg_cost = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
-    currency = models.ForeignKey(Currencies, null=False, related_name='Inventory_currency')
+    currency = models.ForeignKey(Currencies, on_delete=models.CASCADE, null=False, related_name='Inventory_currency')
     # vendor
     # inventory_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='Inventory_inventory_account')
     # cosg_account = models.ForeignKey(ChartOfAccount, null=False, blank=False, related_name='Inventory_cosg_account')
 
-    created_by = models.ForeignKey(User, default=User, related_name='Inventory_created_by')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=User, related_name='Inventory_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
-    modified_by = models.ForeignKey(User, null=True, blank=True, related_name='Inventory_modified_by')
+    modified_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='Inventory_modified_by')
     updated_date = models.DateTimeField(null=True, blank=True, editable=False)
 
     class Meta:

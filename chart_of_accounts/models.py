@@ -11,16 +11,16 @@ User = get_user_model()
 
 
 class ChartOfAccount(models.Model):
-    org_id = models.ForeignKey(Organization, related_name='ChartOfAccounts_org_id')
+    org_id = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='ChartOfAccounts_org_id')
     code = models.IntegerField(null=False,blank=False)
     name = models.CharField(null=False,blank=False,max_length=500)
-    type_code = models.ForeignKey(AccountType, null=False, blank=False, related_name='ChartOfAccounts_type_code')
-    main_code = models.ForeignKey('self', null=True, blank=True, related_name='ChartOfAccounts_main_code')
+    type_code = models.ForeignKey(AccountType, on_delete=models.CASCADE, null=False, blank=False, related_name='ChartOfAccounts_type_code')
+    main_code = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='ChartOfAccounts_main_code')
 
-    created_by = models.ForeignKey(User, default=User, related_name='ChartOfAccounts_created_by')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=User, related_name='ChartOfAccounts_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
-    modified_by = models.ForeignKey(User, null=True, blank=True, related_name='ChartOfAccounts_modified_by')
+    modified_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='ChartOfAccounts_modified_by')
     updated_date = models.DateTimeField(null=True, blank=True, editable=False)
 
     class Meta:

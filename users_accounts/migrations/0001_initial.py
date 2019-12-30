@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0011_auto_20170831_0224'),
+        # ('auth', '0011_auto_20170831_0224'),
     ]
 
     operations = [

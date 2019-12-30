@@ -7,16 +7,16 @@ User = get_user_model()
 
 
 class Vendor(models.Model):
-    org_id = models.ForeignKey(Organization, related_name='Vendor_org_id')
+    org_id = models.ForeignKey(Organization, on_delete=models.CASCADE, related_name='Vendor_org_id')
     name = models.CharField(max_length=500, null=False, blank=False)
     email = models.EmailField(null=True, blank=True)
     phone = models.CharField(max_length=20, null=True, blank=True)
     site_url = models.URLField(null=True,blank=True)
 
-    created_by = models.ForeignKey(User, default=User, related_name='Vendor_created_by')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=User, related_name='Vendor_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
-    modified_by = models.ForeignKey(User, null=True, blank=True, related_name='Vendor_modified_by')
+    modified_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='Vendor_modified_by')
     updated_date = models.DateTimeField(null=True, blank=True, editable=False)
 
     class Meta:

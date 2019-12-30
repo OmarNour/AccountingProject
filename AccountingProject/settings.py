@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'users_accounts.middleware.user_mw.ThreadLocals',
     # 'users_accounts.middleware.filter_ip_middleware.FilterIPMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'AccountingProject.urls'
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'AccountingProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -109,6 +110,7 @@ DATABASES = {
         'HOST': 'omarNour.mysql.pythonanywhere-services.com',
     }
 }
+"""
 
 # 5432
 # Password validation

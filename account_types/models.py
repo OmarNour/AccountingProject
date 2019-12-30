@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 
 from AccountingApp.models import Sign
@@ -13,20 +14,20 @@ class AccountType(models.Model):
     # Assets = Liabilities + Equity/Capital + Income/Revenue - Expenses
 
     # print(md_user)
-    org_id = models.ForeignKey(Organization,
+    org_id = models.ForeignKey(Organization, on_delete=models.CASCADE,
                                # default=Organization.objects.filter().get(),
                                related_name='accountType_org_id')
     code = models.IntegerField(null=False, blank=False)
     name = models.CharField(max_length=500)
-    main_code = models.ForeignKey('self', null=True, blank=True, related_query_name='orgID')
+    main_code = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_query_name='orgID')
 
-    dr_sign = models.ForeignKey(Sign, null=False, blank=False, related_name='account_type_dr_sign')
-    cr_sign = models.ForeignKey(Sign, null=False, blank=False, related_name='account_type_cr_sign')
+    dr_sign = models.ForeignKey(Sign, on_delete=models.CASCADE, null=False, blank=False, related_name='account_type_dr_sign')
+    cr_sign = models.ForeignKey(Sign, on_delete=models.CASCADE, null=False, blank=False, related_name='account_type_cr_sign')
 
-    created_by = models.ForeignKey(User, default=User, related_name='accountType_created_by')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, default=User, related_name='accountType_created_by')
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
 
-    modified_by = models.ForeignKey(User, null=True, blank=True, related_name='accountType_modified_by')
+    modified_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='accountType_modified_by')
     updated_date = models.DateTimeField(null=True, blank=True, editable=False)
 
     class Meta:

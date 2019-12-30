@@ -1,26 +1,28 @@
-from django.conf.urls import url
+from django.urls import include, path
 from AccountingApp import views
 
 app_name = 'AccountingApp'
 urlpatterns = [
-    # url(r'^$', views.index, name='index'),
-    url(r'^(?i)settings/', views.settings, name='settings'),
-    url(r'^(?i)accounts-types/', views.account_types, name='accounts_types'),
-    url(r'^(?i)chart-of-accounts/', views.chart_of_accounts, name='chart_of_accounts'),
-    url(r'^(?i)account/(?P<code>\w+)/$', views.get_account_by_code, name='get_account_by_code'),
-    url(r'^(?i)edit-account/(?P<code>\w+)/$', views.edit_account_by_code, name='edit_account_by_code'),
-    url(r'^(?i)new-account/', views.chart_of_accounts_new, name='chart_of_accounts_new'),
-    url(r'^(?i)new-transaction/', views.add_transaction, name='add_transaction'),
-    url(r'^(?i)all-transactions/', views.all_transactions, name='all_transactions'),
-    url(r'^(?i)transaction/(?P<transaction_id>\w+)/$', views.get_transaction_by_id, name='get_transaction_by_id'),
-    url(r'^(?i)edit-transaction/(?P<transaction_id>\w+)/$', views.edit_transaction_by_id, name='edit_transaction_by_id'),
-    # url(r'^export/(.*)', views.export_data, name="export"),
-    url(r'^export/(?P<atype>\w+)/$', views.export_data, name="export"),  # working fine
-    url(r'^import/', views.import_data, name="import"),
-    url(r'^import_sheet/', views.import_sheet, name="import_sheet"),  # working fine
-    url(r'^handson_view/', views.handson_table, name="handson_view"),
+    # url('$', views.index, name='index'),
+    # path('', views.home, name='home'),
 
-    #url(r'^(?i)user_login/', views.user_login, name='user_login'),
+    path('settings/', views.settings, name='settings'),
+    path('accounts-types/', views.account_types, name='accounts_types'),
+    path('chart-of-accounts/', views.chart_of_accounts, name='chart_of_accounts'),
+    path('account/<code>/', views.get_account_by_code, name='get_account_by_code'),
+    path('edit-account/<code>/', views.edit_account_by_code, name='edit_account_by_code'),
+    path('new-account/', views.chart_of_accounts_new, name='chart_of_accounts_new'),
+    path('new-transaction/', views.add_transaction, name='add_transaction'),
+    path('all-transactions/', views.all_transactions, name='all_transactions'),
+    path('transaction/<transaction_id>)/', views.get_transaction_by_id, name='get_transaction_by_id'),
+    path('edit-transaction/<transaction_id>/', views.edit_transaction_by_id, name='edit_transaction_by_id'),
+    # url('export/(.*)', views.export_data, name="export"),
+    path('export/<atype>/', views.export_data, name="export"),  # working fine
+    path('import/', views.import_data, name="import"),
+    path('import_sheet/', views.import_sheet, name="import_sheet"),  # working fine
+    path('handson_view/', views.handson_table, name="handson_view"),
+
+    #url('user_login/', views.user_login, name='user_login'),
 ]
 
 

@@ -6,8 +6,8 @@ from django.contrib.auth.mixins import(
     LoginRequiredMixin,
     PermissionRequiredMixin
 )
-
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
+# from django.core.urlresolvers import reverse, reverse_lazy
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from django.views import generic

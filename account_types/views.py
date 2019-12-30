@@ -5,14 +5,15 @@ from django.contrib.auth.mixins import(
     LoginRequiredMixin
 )
 
-from django.core.urlresolvers import reverse, reverse_lazy
+from django.urls import reverse, reverse_lazy
+# from django.core.urlresolvers import reverse, reverse_lazy
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.contrib.auth.models import User
 
 from .models import AccountType, Organization
-from braces.views import SelectRelatedMixin
+# from braces.views import SelectRelatedMixin
 # from users_accounts.middleware import filter_ip_middleware
 # md_user = filter_ip_middleware.FilterIPMiddleware
 
@@ -40,8 +41,8 @@ class CreateAccountType(LoginRequiredMixin, generic.CreateView):
         return super(CreateAccountType, self).form_valid(form)
 
 
-class AccountTypesListView(LoginRequiredMixin,SelectRelatedMixin, generic.ListView):
-    model = AccountType
+# class AccountTypesListView(LoginRequiredMixin,SelectRelatedMixin, generic.ListView):
+#     model = AccountType
     # select_related = 'org_id'
 
 

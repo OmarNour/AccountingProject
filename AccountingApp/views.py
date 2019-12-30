@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.template import RequestContext
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 
 from AccountingApp.models import AccountTypes, ChartOfAccounts, ExchangeRate, Transactions, AccountTypesDrCr, Currencies
 from AccountingApp.forms import UserForm, ChartOfAccountsForm, TransactionsForm

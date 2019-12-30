@@ -27,8 +27,8 @@ class Transaction(models.Model):
     void = models.BooleanField(default=False)
     transaction_source = models.ForeignKey(TransactionSources, null=False,blank=False, related_name='Transactions_source', on_delete=models.PROTECT)
     reference_number = models.CharField(max_length=10, null=True, blank=True)
-    amount_is = models.ForeignKey(LOV, null=False, blank=False, related_name='Transaction_amount_is_LOV')
-    tax = models.ForeignKey(Tax, null=True, blank=True, related_name='Transaction_tax')
+    amount_is = models.ForeignKey(LOV, on_delete=models.CASCADE, null=False, blank=False, related_name='Transaction_amount_is_LOV')
+    tax = models.ForeignKey(Tax, on_delete=models.CASCADE, null=True, blank=True, related_name='Transaction_tax')
     # tax_amount = models.DecimalField(max_digits=30, decimal_places=6, null=False, blank=False)
 
     created_by = models.ForeignKey(User, default=User, related_name='Transactions_created_by', on_delete=models.PROTECT)

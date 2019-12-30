@@ -5,7 +5,8 @@ from django.contrib.auth.mixins import(
     PermissionRequiredMixin
 )
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
+# from django.core.urlresolvers import reverse_lazy
 from django.views import generic
 import calendar
 
