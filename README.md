@@ -1,19 +1,30 @@
-# AccountingProject
-	ERD: https://www.lucidchart.com/invitations/accept/23f80ee4-2866-4947-95ca-11a809903f3e
-		
-	o Features/functionality:	
-	    	Multi Organizations
-	    	Multi Currencies
-	    	Exchange rates
-	    	Manual Journals Entry
-	    	Billings
-	    	Taxes
-	    	Import/Export data to excel sheets  
+## Table of contents
+* [General info](#general-info)
+* [Features](#features)
+* [Upcoming Features](#upcoming-features)
+* [Technologies](#technologies)
+
+
+## General info:
+An online accounting software, for small and medium business! 
 	
-	o Upcoming features/functionality:  
-	    	Inventories
-	    	Invoices
-	    	POs
-	    	Expenses claims 
-	    	Dashboards
-	    	Financial reports
+## Features:
+* Multi Organization
+* Multi Currencies
+* Exchange Rates
+* Manual Journals Entry
+* Billings
+* Taxes
+* Import/Export data from/to excel sheets
+
+## Upcoming Features:
+* Inventories
+* Invoices
+* POs
+* Expenses
+* Recurring transactions
+* Dashboards
+* Financial reports
+
+## Technologies
+Project is created with Django 3.0.1
